@@ -1,0 +1,27 @@
+# API keys and secrets
+secrets.env
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code local config
+.claude/
+settings.local.json
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Output (optional — uncomment to track reports)
+# output/

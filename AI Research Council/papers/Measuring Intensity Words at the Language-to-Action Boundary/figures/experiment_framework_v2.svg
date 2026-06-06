@@ -1,0 +1,152 @@
+<svg width="680" viewBox="0 0 680 290" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: white;">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<style>
+text { fill: #2C2C2A; }
+.header { font-size: 12px; fill: #5F5E5A; font-weight: 400; }
+.label { font-size: 11px; font-weight: 500; fill: #5F5E5A; }
+.box-title { font-size: 12px; font-weight: 500; }
+.box-sub { font-size: 10px; font-weight: 400; }
+.prompt-text { font-size: 10px; fill: #444441; }
+.prompt-hl { font-weight: 500; fill: #185FA5; }
+.mono { font-family: 'SF Mono', 'Consolas', 'Monaco', monospace; font-size: 10px; }
+.note { font-size: 9px; fill: #888780; }
+.note8 { font-size: 8px; fill: #888780; }
+</style>
+
+<!-- LANGUAGE-TO-ACTION BOUNDARY -->
+<line x1="388" y1="28" x2="388" y2="244" stroke="#888780" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.45"/>
+<text class="note" x="388" y="262" text-anchor="middle">Language → action boundary</text>
+
+<!-- COLUMN HEADERS -->
+<text class="header" x="100" y="22" text-anchor="middle">Input</text>
+<text class="header" x="230" y="22" text-anchor="middle">Prompt template</text>
+<text class="header" x="352" y="22" text-anchor="middle">Model</text>
+<text class="header" x="440" y="22" text-anchor="middle">Action</text>
+<text class="header" x="540" y="22" text-anchor="middle">Testbed</text>
+<text class="header" x="636" y="22" text-anchor="middle">Measured</text>
+
+<!-- ====== ROW 1: NO-CONTEXT ====== -->
+
+<text class="label" x="8" y="76">No context</text>
+
+<!-- Word pill -->
+<path d="M88,62 H118 A14,14 0 0 1 132,76 A14,14 0 0 1 118,90 H88 A14,14 0 0 1 74,76 A14,14 0 0 1 88,62 Z" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="103" y="80" text-anchor="middle" style="font-size:11px;font-weight:500;font-style:italic;fill:#3C3489">word</text>
+
+<!-- Arrow -->
+<line x1="134" y1="76" x2="148" y2="76" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Prompt template -->
+<rect x="152" y="52" width="162" height="50" rx="4" fill="none" stroke="#B4B2A9" stroke-width="0.5"/>
+<text class="prompt-text" x="233" y="67" text-anchor="middle">"...should spend</text>
+<text class="prompt-text" x="233" y="80" text-anchor="middle"><tspan class="prompt-hl">[WORD]</tspan> more time</text>
+<text class="prompt-text" x="233" y="93" text-anchor="middle">on innovation."</text>
+
+<!-- Arrow -->
+<line x1="316" y1="76" x2="328" y2="76" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- LLM -->
+<rect x="332" y="60" width="48" height="32" rx="4" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text x="356" y="80" text-anchor="middle" style="font-size:12px;font-weight:500;fill:#444441">LLM</text>
+
+<!-- Arrow crosses boundary -->
+<line x1="382" y1="76" x2="400" y2="76" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Tool call -->
+<rect x="404" y="60" width="86" height="32" rx="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="mono" x="447" y="80" text-anchor="middle" style="fill:#633806">tool_call(x)</text>
+
+<!-- Arrow -->
+<line x1="492" y1="76" x2="504" y2="76" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- MILP Solver -->
+<rect x="508" y="52" width="68" height="48" rx="4" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="542" y="70" text-anchor="middle" style="font-size:9px;font-weight:400;fill:#185FA5">Production</text>
+<text x="542" y="82" text-anchor="middle" style="font-size:10px;font-weight:500;fill:#0C447C">MILP solver</text>
+<text x="542" y="94" text-anchor="middle" style="font-size:8px;fill:#185FA5">deterministic</text>
+
+<!-- Arrow -->
+<line x1="578" y1="76" x2="600" y2="76" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Measured output -->
+<rect x="604" y="56" width="62" height="40" rx="4" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="635" y="73" text-anchor="middle" style="font-size:10px;font-weight:500;fill:#27500A">x</text>
+<text x="635" y="87" text-anchor="middle" style="font-size:9px;fill:#3B6D11">Δ objective</text>
+
+<!-- ====== ROW 2: WITH CONTEXT ====== -->
+
+<text class="label" x="8" y="185">With context</text>
+
+<!-- Word pill -->
+<path d="M88,144 H118 A14,14 0 0 1 132,158 A14,14 0 0 1 118,172 H88 A14,14 0 0 1 74,158 A14,14 0 0 1 88,144 Z" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="103" y="162" text-anchor="middle" style="font-size:11px;font-weight:500;font-style:italic;fill:#3C3489">word</text>
+
+<!-- Current state: chamfered shape -->
+<polygon points="82,198 76,206 76,218 82,226 132,226 138,218 138,206 132,198" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="107" y="216" text-anchor="middle" style="font-size:10px;font-weight:500;fill:#085041">X %</text>
+<text class="note8" x="107" y="240" text-anchor="middle">Starting allocation</text>
+
+<!-- Merge arrows -->
+<line x1="134" y1="158" x2="142" y2="162" stroke="#888780" stroke-width="0.5"/>
+<line x1="140" y1="212" x2="142" y2="178" stroke="#888780" stroke-width="0.5"/>
+<line x1="142" y1="162" x2="142" y2="178" stroke="#888780" stroke-width="0.5"/>
+<line x1="142" y1="170" x2="148" y2="170" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Prompt template -->
+<rect x="152" y="142" width="162" height="56" rx="4" fill="none" stroke="#B4B2A9" stroke-width="0.5"/>
+<text class="prompt-text" x="233" y="156" text-anchor="middle">"Current allocation is</text>
+<text class="prompt-text" x="233" y="169" text-anchor="middle"><tspan class="prompt-hl">X</tspan>%. I would like to</text>
+<text class="prompt-text" x="233" y="182" text-anchor="middle"><tspan class="prompt-hl">[WORD]</tspan> increase</text>
+<text class="prompt-text" x="233" y="195" text-anchor="middle">innovation."</text>
+
+<text class="note8" x="233" y="207" text-anchor="middle">X ∈ {0, 5, 10, 18, 25, 32, 50, 53, 75, 89}</text>
+
+<!-- Arrow -->
+<line x1="316" y1="170" x2="328" y2="170" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- LLM -->
+<rect x="332" y="154" width="48" height="32" rx="4" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text x="356" y="174" text-anchor="middle" style="font-size:12px;font-weight:500;fill:#444441">LLM</text>
+
+<!-- Arrow crosses boundary -->
+<line x1="382" y1="170" x2="400" y2="170" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Tool call or abstention -->
+<rect x="404" y="154" width="86" height="40" rx="4" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text class="mono" x="447" y="170" text-anchor="middle" style="fill:#633806">tool_call(x)</text>
+<text x="447" y="184" text-anchor="middle" style="font-size:9px;fill:#854F0B">or abstention (∅)</text>
+
+<!-- Arrow -->
+<line x1="492" y1="170" x2="504" y2="170" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- MILP Solver -->
+<rect x="508" y="148" width="68" height="48" rx="4" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="542" y="166" text-anchor="middle" style="font-size:9px;font-weight:400;fill:#185FA5">Production</text>
+<text x="542" y="178" text-anchor="middle" style="font-size:10px;font-weight:500;fill:#0C447C">MILP solver</text>
+<text x="542" y="190" text-anchor="middle" style="font-size:8px;fill:#185FA5">deterministic</text>
+
+<!-- Arrow -->
+<line x1="578" y1="170" x2="600" y2="170" stroke="#888780" stroke-width="0.5" marker-end="url(#arrow)"/>
+
+<!-- Measured output -->
+<rect x="604" y="146" width="62" height="48" rx="4" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="635" y="164" text-anchor="middle" style="font-size:10px;font-weight:500;fill:#27500A">x or ∅</text>
+<text x="635" y="179" text-anchor="middle" style="font-size:9px;fill:#3B6D11">Δ objective</text>
+<text x="635" y="190" text-anchor="middle" style="font-size:9px;fill:#3B6D11">abstention</text>
+
+<!-- ====== ANNOTATIONS ====== -->
+
+<!-- Stochastic bracket -->
+<path d="M330 44 L330 42 L382 42 L382 44" fill="none" stroke="#888780" stroke-width="0.5" opacity="0.4"/>
+<text class="note" x="356" y="38" text-anchor="middle">Stochastic</text>
+
+<!-- ×30 label -->
+<text class="note" x="356" y="126" text-anchor="middle">×30 per cell</text>
+
+</svg>

@@ -1,0 +1,36 @@
+REVIEW TYPE: ArXiv readiness check with framing evaluation
+TARGET: ArXiv preprint. This is the first published piece of a planned multi-model
+research program. It will also be shared on LinkedIn, a personal blog, and used in
+conference pitches and a research mentorship group (Algoverse). The paper explicitly
+frames itself as a "first measurement slice," not a complete study.
+STAGE: Near-final draft (v3). All statistics have been verified against raw data.
+GOALS: (1) Establish priority and timestamp on the experiment design and initial
+results — this is a portfolio piece to pitch and garner interest, not a final
+conference submission. (2) Frame the paper as a psycholinguistic measurement study —
+tool calling is the instrument, the optimizer is the testbed, the subject is word
+interpretation. If the paper still reads like a "tool-calling paper," that framing
+has failed.
+
+CONCERNS — please give extra attention to:
+1. QUIRK TAXONOMY HONESTY: The 10-word scale is organized by analogy to Quirk et al.'s
+   (1985) degree-modifier taxonomy, but only 3 of the 10 words appear in Quirk's
+   explicit lists. The remaining 7 were chosen to fill categorical gaps using terms
+   natural to operational instructions. The paper already acknowledges this is a
+   researcher-defined heuristic ordering, not an empirically validated scale. Is this
+   framing currently sufficient for a preprint, or does it need further qualification?
+2. STATISTICAL RIGOR: The paper uses nonparametric tests throughout (Kruskal-Wallis H,
+   Spearman rho, epsilon-squared effect size) without multiple-comparison correction.
+   There is no human baseline — ordinality is researcher-hypothesized. These limitations
+   are acknowledged in the paper. Verify the acknowledgments are adequate and that
+   statistical claims are not oversold given the stated scope.
+3. CLARITY AND FLOW: Results are structured into 5 blocks under two empirical questions.
+   Does this structure work? Does the paper read coherently front-to-back? Are the
+   limitations clearly stated? Is the Future Work section appropriately scoped?
+
+CONTEXT: This is a sole-author paper by a Georgia Tech ISyE student and Algoverse
+research mentee. It is the author's first preprint. The paper uses first-person "I"
+throughout. The experimental testbed is a synthetic constrained resource-allocation
+environment — no production systems, no proprietary data, no deployment claims. The
+goal is a sound preprint for ArXiv, not a polished NeurIPS submission. Known
+limitations (single model, one direction, no human baseline, 10-point baseline grid)
+are explicitly stated in the paper and scoped as future work.
