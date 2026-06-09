@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AI Research Council — Multi-persona research paper review via Anthropic API."""
+"""Business Advisory Council — Multi-persona business review via Anthropic API."""
 
 import argparse
 import asyncio
@@ -53,8 +53,8 @@ class ReviewResult:
 
 @dataclass
 class CouncilReport:
-    paper_path: str
-    paper_title: str
+    project_path: str
+    project_title: str
     brief: str
     timestamp: str
     stage1_reviews: dict[str, ReviewResult]
@@ -89,16 +89,23 @@ def calculate_cost(model: str, input_tokens: int, output_tokens: int,
     return round(cost, 4)
 
 
-def extract_title(tex: str) -> str:
-    m = re.search(r"\\title\{([^}]+)\}", tex)
-    if m:
-        title = m.group(1)
-        title = re.sub(r"\\[a-zA-Z]+\{([^}]*)\}", r"\1", title)
-        return title.strip()
-    return "Untitled Paper"
+def extract_title(text: str, filepath: str = "") -> str:
+    """Extract a title from the business materials or fall back to filename."""
+    for line in text.strip().splitlines():
+        line = line.strip()
+        if line.startswith("# "):
+            return line[2:].strip()
+        if line and not line.startswith("#"):
+            title = line[:100].strip()
+            if title:
+                return title
+            break
+    if filepath:
+        return Path(filepath).stem.replace("_", " ").replace("-", " ").title()
+    return "Untitled Business"
 
 
-def read_paper(path: str) -> str:
+def read_materials(path: str) -> str:
     p = Path(path)
     if not p.exists():
         print(f"Error: file not found: {path}")
@@ -113,7 +120,7 @@ def read_paper(path: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Figure extraction
+# Image loading (optional attachments)
 # ---------------------------------------------------------------------------
 
 SUPPORTED_IMAGE_EXTENSIONS: dict[str, str] = {
@@ -124,93 +131,34 @@ SUPPORTED_IMAGE_EXTENSIONS: dict[str, str] = {
     ".webp": "image/webp",
 }
 
-SUPPORTED_DOC_EXTENSIONS: dict[str, str] = {
-    ".pdf": "application/pdf",
-}
 
-SUPPORTED_FIGURE_EXTENSIONS = {**SUPPORTED_IMAGE_EXTENSIONS, **SUPPORTED_DOC_EXTENSIONS}
-
-
-def _resolve_figure_path(ref: str, tex_dir: Path) -> Path | None:
-    search_dirs = [
-        tex_dir,
-        tex_dir / "figures",
-        tex_dir / "images",
-        tex_dir / "figs",
-        tex_dir / "fig",
-    ]
-    ref_stem = Path(ref).stem
-    ref_parent = Path(ref).parent
-
-    for d in search_dirs:
-        if not d.exists():
-            continue
-        # Try exact path first
-        candidate = d / ref
-        if candidate.is_file():
-            return candidate
-        # Try appending supported extensions (ref has no extension)
-        for ext in SUPPORTED_FIGURE_EXTENSIONS:
-            candidate = d / (ref + ext)
-            if candidate.is_file():
-                return candidate
-        # Try swapping extension (e.g., .pdf -> .png)
-        search_in = d / ref_parent if ref_parent != Path(".") else d
-        if search_in.exists():
-            for ext in SUPPORTED_FIGURE_EXTENSIONS:
-                candidate = search_in / (ref_stem + ext)
-                if candidate.is_file():
-                    return candidate
-    return None
-
-
-def extract_figures(tex_content: str, tex_dir: Path) -> list[dict]:
-    """Parse \\includegraphics refs from LaTeX and return API content blocks."""
-    pattern = r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}"
-    refs = re.findall(pattern, tex_content)
-
-    if not refs:
-        return []
-
-    _log(f"  Found {len(refs)} figure reference(s) in LaTeX")
+def load_images(image_paths: list[str]) -> list[dict]:
+    """Load image files and return API content blocks."""
     blocks: list[dict] = []
-
-    for ref_path in refs:
-        ref_path = ref_path.strip()
-        resolved = _resolve_figure_path(ref_path, tex_dir)
-        if resolved is None:
-            _log(f"    {ref_path} — not found, skipping")
+    for img_path in image_paths:
+        p = Path(img_path)
+        if not p.exists():
+            _log(f"  Image not found: {img_path}, skipping")
             continue
-        ext = resolved.suffix.lower()
-        media_type = SUPPORTED_FIGURE_EXTENSIONS.get(ext)
+        ext = p.suffix.lower()
+        media_type = SUPPORTED_IMAGE_EXTENSIONS.get(ext)
         if media_type is None:
-            _log(f"    {resolved.name} — unsupported format, skipping")
+            _log(f"  Unsupported image format: {p.name}, skipping")
             continue
-
-        data = base64.b64encode(resolved.read_bytes()).decode("utf-8")
-        blocks.append({"type": "text", "text": f"[Figure: {ref_path}]"})
-        if ext in SUPPORTED_DOC_EXTENSIONS:
-            blocks.append({
-                "type": "document",
-                "source": {
-                    "type": "base64",
-                    "media_type": media_type,
-                    "data": data,
-                },
-            })
-        else:
-            blocks.append({
-                "type": "image",
-                "source": {
-                    "type": "base64",
-                    "media_type": media_type,
-                    "data": data,
-                },
-            })
-        _log(f"    {resolved.name} — loaded ({resolved.stat().st_size // 1024}KB)")
+        data = base64.b64encode(p.read_bytes()).decode("utf-8")
+        blocks.append({"type": "text", "text": f"[Image: {p.name}]"})
+        blocks.append({
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": media_type,
+                "data": data,
+            },
+        })
+        _log(f"  {p.name} — loaded ({p.stat().st_size // 1024}KB)")
 
     if blocks:
-        _log(f"  {len(blocks) // 2} figure(s) will be sent to reviewers")
+        _log(f"  {len(blocks) // 2} image(s) will be sent to advisors")
     return blocks
 
 
@@ -241,7 +189,7 @@ async def call_reviewer(
         if not persona.model.startswith("claude-opus"):
             kwargs["temperature"] = temperature
         if persona.web_search:
-            kwargs["tools"] = [{"type": "web_search_20250305", "name": "web_search"}]
+            kwargs["tools"] = [{"type": "web_search_20250305", "name": "web_search", "max_uses": 3}]
         response = await client.messages.create(**kwargs)
 
         elapsed = round(time.monotonic() - t0, 1)
@@ -282,17 +230,17 @@ async def call_reviewer(
 
 async def run_stage1(
     client: AsyncAnthropic,
-    paper_text: str,
+    materials_text: str,
     brief: str,
     reviewers: list[PersonaConfig],
     semaphore: asyncio.Semaphore,
-    figures: list[dict] | None = None,
+    images: list[dict] | None = None,
 ) -> dict[str, ReviewResult]:
     _log(f"Stage 1: Dispatching {len(reviewers)} independent reviews...")
 
     tasks = []
     for persona in reviewers:
-        system, msgs = build_review_prompt(persona.slug, paper_text, brief, figures)
+        system, msgs = build_review_prompt(persona.slug, materials_text, brief, images)
         tasks.append(
             call_reviewer(
                 client, persona, system, msgs,
@@ -316,7 +264,7 @@ async def run_stage1(
     _log(f"Stage 1 complete. {len(successful)}/{len(reviewers)} succeeded. Cost: ${stage_cost:.2f}")
 
     if len(successful) < 3:
-        _log("ERROR: Fewer than 3 reviewers succeeded. Aborting.")
+        _log("ERROR: Fewer than 3 advisors succeeded. Aborting.")
         sys.exit(1)
 
     return successful
@@ -324,12 +272,12 @@ async def run_stage1(
 
 async def run_stage2(
     client: AsyncAnthropic,
-    paper_text: str,
+    materials_text: str,
     brief: str,
     stage1_results: dict[str, ReviewResult],
     reviewers: list[PersonaConfig],
     semaphore: asyncio.Semaphore,
-    figures: list[dict] | None = None,
+    images: list[dict] | None = None,
 ) -> dict[str, ReviewResult]:
     _log(f"Stage 2: Dispatching deliberation round...")
 
@@ -342,7 +290,7 @@ async def run_stage2(
         if persona.slug not in active_slugs:
             continue
         system, msgs = build_deliberation_prompt(
-            persona.slug, paper_text, all_reviews, brief, figures
+            persona.slug, materials_text, all_reviews, brief, images
         )
         active_personas.append(persona)
         tasks.append(
@@ -372,19 +320,19 @@ async def run_stage2(
 
 async def run_stage3(
     client: AsyncAnthropic,
-    paper_text: str,
+    materials_text: str,
     brief: str,
     stage1_results: dict[str, ReviewResult],
     stage2_results: dict[str, ReviewResult],
-    figures: list[dict] | None = None,
+    images: list[dict] | None = None,
 ) -> ReviewResult:
-    _log("Stage 3: Chairman synthesis...")
+    _log("Stage 3: Chief Advisory Officer synthesis...")
 
     all_reviews = {slug: r.response_text for slug, r in stage1_results.items()}
     all_deliberations = {slug: r.response_text for slug, r in stage2_results.items()}
 
     system, msgs = build_synthesis_prompt(
-        paper_text, all_reviews, all_deliberations, brief, figures
+        materials_text, all_reviews, all_deliberations, brief, images
     )
 
     t0 = time.monotonic()
@@ -414,8 +362,8 @@ async def run_stage3(
     _log(f"Stage 3 complete. ({elapsed}s, {output_tok} tokens out, ${cost:.2f})")
 
     return ReviewResult(
-        persona_name="Chairman",
-        persona_slug="chairman",
+        persona_name="Chief Advisory Officer",
+        persona_slug="chief_advisory_officer",
         response_text=text,
         input_tokens=input_tok,
         output_tokens=output_tok,
@@ -433,8 +381,8 @@ async def run_stage3(
 
 def generate_report(report: CouncilReport) -> str:
     lines = [
-        f"# AI Research Council Report",
-        f"**Paper:** {report.paper_title}",
+        f"# Business Advisory Council Report",
+        f"**Business:** {report.project_title}",
         f"**Date:** {report.timestamp}",
         f"**Brief:** {report.brief}",
         f"**Cost:** ${report.total_cost:.2f} | "
@@ -451,7 +399,7 @@ def generate_report(report: CouncilReport) -> str:
         lines.append("---")
         lines.append("")
 
-    lines.append("## Individual Reviews")
+    lines.append("## Individual Advisory Reviews")
     lines.append("")
     for i, (slug, result) in enumerate(report.stage1_reviews.items(), 1):
         lines.append(f"### {i}. {result.persona_name}")
@@ -478,7 +426,7 @@ def generate_report(report: CouncilReport) -> str:
     if not report.stage2_deliberations:
         stages_run = "2 stages (Independent Review → Synthesis, deliberation skipped)"
     lines.append(
-        f"This report was generated by the AI Research Council using {stages_run}."
+        f"This report was generated by the Business Advisory Council using {stages_run}."
     )
     lines.append("")
 
@@ -486,8 +434,8 @@ def generate_report(report: CouncilReport) -> str:
     for r in report.stage1_reviews.values():
         reviewer_models.add(r.model)
     chairman_model = report.synthesis.model if report.synthesis else "N/A"
-    lines.append(f"**Reviewer models:** {', '.join(sorted(reviewer_models))}")
-    lines.append(f"**Chairman model:** {chairman_model}")
+    lines.append(f"**Advisor models:** {', '.join(sorted(reviewer_models))}")
+    lines.append(f"**Chief Advisory Officer model:** {chairman_model}")
     lines.append(f"**Total cost:** ${report.total_cost:.2f}")
     lines.append("")
 
@@ -499,8 +447,8 @@ def generate_report(report: CouncilReport) -> str:
 # ---------------------------------------------------------------------------
 
 async def run_council(args: argparse.Namespace) -> None:
-    paper_text = read_paper(args.paper_path)
-    title = extract_title(paper_text)
+    materials_text = read_materials(args.project_path)
+    title = extract_title(materials_text, args.project_path)
 
     brief = args.brief
     if args.brief_file:
@@ -510,22 +458,15 @@ async def run_council(args: argparse.Namespace) -> None:
         print("Error: --brief or --brief-file is required.")
         sys.exit(1)
 
-    _log(f"Paper: {title}")
+    _log(f"Business: {title}")
     _log(f"Brief: {brief[:120]}{'...' if len(brief) > 120 else ''}")
     _log(f"Deliberation: {'ON' if not args.skip_deliberation else 'SKIPPED'}")
 
     if args.dry_run:
-        tex_dir = Path(args.paper_path).resolve().parent
-        figures = extract_figures(paper_text, tex_dir)
-        num_figures = len(figures) // 2  # each figure = text label + image block
-        paper_tokens_approx = len(paper_text) // 4
-        figure_tokens_approx = num_figures * 1_600
-        total_tokens = paper_tokens_approx + figure_tokens_approx
-        _log(f"Paper size: ~{paper_tokens_approx:,} tokens (approx)")
-        if num_figures:
-            _log(f"Figures: {num_figures} images (~{figure_tokens_approx:,} tokens)")
+        materials_tokens_approx = len(materials_text) // 4
+        _log(f"Materials size: ~{materials_tokens_approx:,} tokens (approx)")
         est = 2.76 if not args.skip_deliberation else 1.91
-        scale = total_tokens / 15_000
+        scale = materials_tokens_approx / 15_000
         _log(f"Estimated cost: ~${est * scale:.2f} (scaled from 15K-token baseline)")
         _log("Dry run complete. No API calls made.")
         return
@@ -535,12 +476,13 @@ async def run_council(args: argparse.Namespace) -> None:
 
     running_cost = 0.0
 
-    # Extract figures
-    tex_dir = Path(args.paper_path).resolve().parent
-    figures = extract_figures(paper_text, tex_dir)
+    # Load optional images
+    images = []
+    if args.images:
+        images = load_images(args.images)
 
     # Stage 1
-    stage1 = await run_stage1(client, paper_text, brief, REVIEWERS, semaphore, figures)
+    stage1 = await run_stage1(client, materials_text, brief, REVIEWERS, semaphore, images)
     running_cost += sum(r.cost_usd for r in stage1.values())
 
     if args.save_intermediate:
@@ -550,14 +492,14 @@ async def run_council(args: argparse.Namespace) -> None:
     stage2: dict[str, ReviewResult] = {}
     if not args.skip_deliberation:
         stage2 = await run_stage2(
-            client, paper_text, brief, stage1, REVIEWERS, semaphore, figures
+            client, materials_text, brief, stage1, REVIEWERS, semaphore, images
         )
         running_cost += sum(r.cost_usd for r in stage2.values())
         if args.save_intermediate:
             _save_intermediate(args, title, "stage2", stage2)
 
     # Stage 3
-    synthesis = await run_stage3(client, paper_text, brief, stage1, stage2, figures)
+    synthesis = await run_stage3(client, materials_text, brief, stage1, stage2, images)
     running_cost += synthesis.cost_usd
 
     # Compile report
@@ -567,8 +509,8 @@ async def run_council(args: argparse.Namespace) -> None:
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     report = CouncilReport(
-        paper_path=args.paper_path,
-        paper_title=title,
+        project_path=args.project_path,
+        project_title=title,
         brief=brief,
         timestamp=timestamp,
         stage1_reviews=stage1,
@@ -589,7 +531,7 @@ async def run_council(args: argparse.Namespace) -> None:
     out_file.write_text(report_md, encoding="utf-8")
 
     _log("=" * 50)
-    _log("Council complete!")
+    _log("Advisory council review complete!")
     _log(f"  Total cost: ${running_cost:.2f}")
     _log(f"  Total tokens: {total_input:,} input / {total_output:,} output")
     _log(f"  Report saved to: {out_file}")
@@ -623,22 +565,27 @@ def _save_intermediate(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="AI Research Council — multi-persona paper review",
+        description="Business Advisory Council — multi-persona business review",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 Examples:
-  python council.py papers/my_paper.tex --brief "Is this ready for ArXiv?"
-  python council.py paper.tex --brief "Full peer review for NeurIPS" --skip-deliberation
-  python council.py paper.tex --brief-file briefs/my_brief.txt --verbose
-  python council.py paper.tex --brief "Quick check" --dry-run
+  python council.py materials/brand_overview.md --brief "Is our positioning right?"
+  python council.py materials/landing_page.txt --brief "Where are we losing customers?"
+  python council.py materials/business_plan.md --brief-file briefs/full_review.txt --verbose
+  python council.py materials/pitch.md --brief "Quick gut check" --dry-run
+  python council.py materials/brand.md --brief "Full review" --images homepage.png product.png
 """,
     )
-    parser.add_argument("paper_path", help="Path to .tex file")
+    parser.add_argument("project_path", help="Path to business materials file (.md, .txt, etc.)")
     parser.add_argument(
-        "--brief", default="", help="Review brief: what you need from the council"
+        "--brief", default="", help="Advisory brief: what you need from the council"
     )
     parser.add_argument(
         "--brief-file", default=None, help="Load brief from a text file"
+    )
+    parser.add_argument(
+        "--images", nargs="*", default=None,
+        help="Optional image files to include (screenshots, mockups, logos, etc.)"
     )
     parser.add_argument(
         "--skip-deliberation", action="store_true",

@@ -1,0 +1,3 @@
+[submodule "AI Research Council/papers/LLM_Optimization_Framework"]
+	path = AI Research Council/papers/LLM_Optimization_Framework
+	url = https://github.com/danieltabach/LLM_Optimization_Framework.git

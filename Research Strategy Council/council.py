@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AI Research Council — Multi-persona research paper review via Anthropic API."""
+"""Research Strategy Council — Multi-persona research strategy review via Anthropic API."""
 
 import argparse
 import asyncio
@@ -623,14 +623,14 @@ def _save_intermediate(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="AI Research Council — multi-persona paper review",
+        description="Research Strategy Council — multi-persona research direction review",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 Examples:
-  python council.py papers/my_paper.tex --brief "Is this ready for ArXiv?"
-  python council.py paper.tex --brief "Full peer review for NeurIPS" --skip-deliberation
-  python council.py paper.tex --brief-file briefs/my_brief.txt --verbose
-  python council.py paper.tex --brief "Quick check" --dry-run
+  python council.py paper.tex --brief-file briefs/vision_brief.txt --verbose
+  python council.py paper.tex --brief "Where should I take this research next?"
+  python council.py paper.tex --brief-file briefs/strategy.txt --save-intermediate
+  python council.py paper.tex --brief "Field viability check" --dry-run
 """,
     )
     parser.add_argument("paper_path", help="Path to .tex file")

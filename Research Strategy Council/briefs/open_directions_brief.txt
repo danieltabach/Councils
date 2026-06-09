@@ -1,0 +1,36 @@
+Who I am:
+Danny Tabach. Working data scientist (JPMorgan Chase — built the staffing optimization engine behind every Chase branch). Finishing a master's at Georgia Tech. AI Safety Research Fellow at Algoverse AI Research — a selective AI safety fellowship where I work with other researchers and PIs on safety research. Algoverse has mentored researchers to publish at top venues (NeurIPS, etc.) and gives me access to collaborators and mentorship I wouldn't have solo.
+
+What I have:
+A preprint on ArXiv: "Does Slightly Mean Somewhat? Measuring Vague Intensity Words in LLM Numeric Actions." The paper is attached as reference material. In short: I built a controlled environment where a language model receives a vague intensity word ("slightly," "drastically," etc.), produces a numeric action through a tool call, and a deterministic backend measures the outcome. Across 6,620 runs, the model compresses 10 words into ~5 distinct outputs, anchors heavily on system state over word choice, and exhibits discontinuous behavior near operational boundaries — including a case where swapping one near-synonym for another ("drastically" → "dramatically") flips the system from acting to refusing in the same state.
+
+The origin story matters: this came from a real production system I built. I looked at my own autonomous planner and realized stakeholders couldn't wield it safely — a one-word change in the instruction could silently move the action from a cautious nudge to pushing a constraint to its ceiling.
+
+What I believe (but need tested):
+I think this paper opens a window into something bigger. The finding isn't just about intensity words — it's about what happens at the interface where human language meets AI numeric action in consequential settings. I've been calling this "passive failure" — the model isn't scheming or refusing maliciously, it's just silently mistranslating intent in ways nobody notices. I think this matters across domains (healthcare, finance, logistics — anywhere a human gives a vague instruction and an AI turns it into a number), and I think the failure modes rhyme across those domains.
+
+But I might be wrong about how big this is. I might be inflating a solid niche result into something it's not. My known failure mode is narrative inflation — falling in love with the vision and trying to make one paper be an entire field. Call me on it if you see it.
+
+The productive question:
+I need to extend this paper into a second study. Not "someday" — this is the immediate next step. I need a concrete, feasible direction that builds on what this paper established and produces a publishable result. What is the strongest next experiment I can run? What would make the biggest contribution given what I've already shown? I'm not looking for a wishlist — I'm looking for the one or two moves that turn a single preprint into a research trajectory.
+
+What I want from this council:
+I'm standing at a fork with many paths. The paper is done. It's on ArXiv. Now what?
+
+I have my own ideas about extensions, but I don't want to anchor you with them. I want YOUR independent read on where this result points. Treat this like a peer collaboration — you've read my paper, you know my position and resources, now tell me:
+
+1. What do you see through this window? What directions does this paper open that I might not be seeing from inside it? Think broadly — not just "run more words" but what research programs, what questions, what fields does this result speak to?
+
+2. Which direction has the highest leverage? If I can only pursue one thread for the next year, which one builds the most — for the research, for my credibility, and for the community?
+
+3. Is the "passive failure at the action interface" framing the right frame? Or is there a better way to position what this paper actually demonstrates? Would a different framing open more doors?
+
+4. Some people have suggested mechanistic interpretability — looking inside the model to understand WHY the compression happens, why the boundary behavior is discontinuous, why "drastically" acts while "dramatically" abstains. Is that the right move, or does it pull me away from the deployment-facing empirical work that's the paper's actual contribution?
+
+5. How does Algoverse factor in? I'm a fellow in an AI safety research program with access to PIs, collaborators, and mentorship infrastructure. How should I be leveraging that for this research program? What should I be bringing to my collaborators and mentors?
+
+6. What's the honest read on my position? Working data scientist, master's student, one preprint, AI safety research fellow at Algoverse. What does this profile actually afford me and what does it not? Where should I aim and what should I stop pretending I can do alone?
+
+7. What am I not seeing? I built this from inside one system and one conviction. Name the blind spot.
+
+I want adversarial honesty, not encouragement. Narrow me — don't expand me. If six advisors each add a direction, that's a failure. If six advisors converge on one path, that's the outcome I need.

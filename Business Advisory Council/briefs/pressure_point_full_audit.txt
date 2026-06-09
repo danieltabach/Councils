@@ -1,0 +1,81 @@
+REVIEW TYPE: Full business audit — strategy, marketing, conversion, financials, brand execution, competitive positioning, and future-readiness. We want every advisor to evaluate their domain but with a unifying focus: how does this brand go from where it is today to consistently converting its target audience into paying customers?
+
+STAGE: Early sales, 4 months in (Feb-June 2026). Legal foundation complete: NY LLC formed May 2026, business bank account at Chase, EIN obtained, trademark filed April 2026 (pending). Shopify store is live at wearpressure.com (Basic plan, $39/mo) with custom theme and code integrations. Backend deployment still being refined. No paid ads yet. Meta Pixel recently connected to Shopify and collecting data. ~39 units sold to date, 363 units remaining in inventory valued at ~$5,501 at COGS. The brand has been doing grassroots marketing — gifting product to local gym community members and friends for brand awareness and word of mouth.
+
+TEAM: 2-person team.
+- Rosa (CEO, full-time): Content creation, product design, inventory management, production, general marketing, accounting. She is doing photography/videography herself using Canva, Vizard, and Instagram/TikTok editing tools. She is getting better at it but it's a significant time bottleneck. She also directs the creative vision, making outsourcing difficult.
+- Daniel (CTO, part-time): Shopify backend, dashboard/tooling, AI integration, custom harness building to speed up Rosa's workflow. Corporate experience as a Data Scientist at JPMorgan. Provides general business strategy advice.
+
+GOALS:
+1. PRIMARY: How do we reach our target audience and convert them? We need to understand the most effective path from where we are now (300 Instagram followers, a few local gym relationships, no paid ads, no TikTok presence) to consistent customer acquisition. What channels, what tactics, what order?
+2. Where are we losing potential customers in the funnel? We have a live site and products — what's preventing conversion?
+3. Is our pricing, margin structure, and cost model sustainable? We're spending before we're selling — when and how does this flip?
+4. How should we prioritize? As a 2-person team we can't do everything. What are the 3-5 highest-leverage moves we should make in the next 30-60 days?
+5. Are our gym partnerships the right growth lever? We're betting heavily on local BJJ gym collaborations — is this the right primary channel?
+
+CONCERNS:
+- Inventory management and manufacturing: Still sourcing a stable manufacturer. Currently using Amazon-sourced suppliers (SportsGearSwag for rashguards/shorts, Tapstitch for oversized tees). Drop 1 was handmade (blanks + heat transfers). Manual labeling for legal compliance is a production bottleneck. We need to find a manufacturer who can handle production at scale without Rosa doing manual assembly.
+- Costs are piling before meaningful revenue. Net financial position is -$1,913 (total spend $8,213 vs $6,300 received from gifts and an interest-free loan). Remaining inventory at COGS is $5,501 — the value is there in product but it's sitting unsold. Monthly recurring costs ~$147/month (Shopify, Canva, Claude AI, Vizard).
+- Content creation is the single biggest time bottleneck. Rosa is doing ALL content creation, design, and production herself. She's improving but it limits how fast the brand can grow its online presence. We need strategies for either automating content workflows or identifying what's worth outsourcing vs. what Rosa must keep control of.
+- Not enough marketing funding or ideation to correctly use funds for maximizing visibility and click-through rate. We have zero paid ad budget right now.
+- Scheduling and task prioritization are scattered. Both founders juggle multiple responsibilities and it's hard to know what to focus on vs. deprioritize day-to-day.
+- Instagram growth is slow (~300 followers after months of posting 3-4x/week). Is our content strategy working? Should we be doing something fundamentally different?
+
+CONSTRAINTS:
+- 2-person team (1 part-time, 1 full-time). Severely limited bandwidth. Every recommendation must be executable by this team or clearly marked as "hire/outsource for this."
+- No paid advertising budget currently. All growth must be organic, partnership-driven, or extremely low-cost until revenue justifies ad spend.
+- Shopify Basic plan ($39/month). Limited reporting and automation vs. Standard ($105/mo).
+- Marketing channels active: Instagram only (3-4 posts/week, ~300 followers, mix of short-form reels and carousel posts, motivational/emotional content focused on the "pressure" philosophy). TikTok and Facebook accounts in progress but not yet active.
+- Email automations in place: abandoned cart recovery, post-purchase follow-up, and browse abandonment — all via Shopify. NOT set up: welcome sequence for new subscribers, win-back for lapsed customers. No SMS marketing.
+- Customer service: basic email via Zohomail (routes to both Daniel and Rosa). No formal support system, chatbot, or FAQ.
+- Signed agreement with American Foundation for Suicide Prevention — 10% of gross profits donated to charity. This is NON-NEGOTIABLE. It is core to the brand mission and the founders' personal values.
+- Photography/videography: Rosa is doing it herself with consumer tools. No professional photoshoot yet. Seeking assistance but budget-constrained.
+
+BOUNDARIES:
+- The core brand identity, mission statement, brand personality, logo, and "Pressure Is a Privilege" philosophy are FIRM. Advisors may reference, evaluate, and weave brand identity into their feedback — for example, noting how well the brand identity translates to a specific channel, or suggesting how to better surface the mission on a product page. But do NOT recommend overhauling the messaging, rebranding, changing the logo, or pivoting the brand's positioning. The vision stays. Execution of that vision is fair game.
+- The charity commitment (10% of gross profits to AFSP) is NON-NEGOTIABLE. Advisors may factor it into financial modeling and suggest how to leverage it as a marketing asset, but cannot recommend reducing or removing it.
+
+CONTEXT — GYM PARTNERSHIPS:
+The gym partnership strategy is viewed as the primary near-term growth lever. The plan is to partner with local BJJ gyms to sell co-branded shirts and rashguards to their member bases (hundreds of potential customers per gym). Three collab options are being pitched:
+- Option A — Gift: PPA produces co-branded tees, gives free shirts to all coaches (zero cost to gym)
+- Option B — Revenue share: Gym gets 25% of net profit, promotes the drop, coaches wear it
+- Option C — Wholesale: Gym buys at $17/unit, retails at $35, keeps full margin
+Target gyms: Riverfront Jiu-Jitsu (warm relationship via Daniel), ChesDel Jiu-Jitsu, Park Slope Academy, Roger Carpenter American Jiu-Jitsu.
+
+CONTEXT — TARGET CUSTOMER:
+Primary: Male grapplers aged 20-35, low-to-middle income, single, some college or degree, trains BJJ/wrestling/MMA 2-4x/week, relatively new to training (1-3 years in). Values self-control over ego, avoids cocky gym branding, deals with imposter syndrome, wants to belong to a community without having to prove themselves. Willing to spend $40-$65 on gear that reflects their identity and mindset. Buys a few times a year around limited drops and competitions.
+Secondary: Women in combat sports aged 25-40, college educated, middle class, feel overlooked by mainstream brands, seek apparel reflecting strength and resilience.
+
+CONTEXT — COMPETITIVE LANDSCAPE:
+The grappling apparel category is fragmented with no dominant brand. Key competitors:
+- Venum ($40-$100, loud/aggressive/mainstream, UFC-powered)
+- Shoyoroll ($180+, exclusive/hype-driven, scarcity model)
+- Hayabusa ($70-$150, technical/engineering-first)
+- Tatami ($40-$80, inclusive/community-first)
+- Level Black ($40-$80, streetwear/countercultural, bold)
+- Hyperfly ($60-$150, aspirational/athlete-culture)
+- Scramble ($50-$80, artistic/irreverent)
+Pressure Point ($40-$65) is the ONLY brand positioning at the quiet, minimalist, composed end of the spectrum. Every other brand in the space leans loud, aggressive, or hype-driven.
+
+CONTEXT — PRODUCT & PRICING:
+- T-shirts: $20-$30 retail, $15 gym price. COGS $5-$10. True net profit after shipping + Shopify fees: $4-$13 per unit depending on product.
+- Rashguards: $50-$55 retail, $35 gym price. COGS ~$26. True net profit: ~$17.50.
+- Fight Shorts: $45-$50 retail, $35 gym price. COGS ~$21. True net profit: ~$17.80.
+- Stay Ready Oversized Tee: $30 retail. COGS ~$11. True net profit: ~$13.
+- Hoodies and sweatpants: in development, not yet available.
+- Drop 3 (Short Sleeve Rashguards, 75 units): recently ordered at $23.83/unit.
+- Packaging cost per unit: $0.42 (sticker + poly bag + thank you card).
+- Customers pay for shipping but Rosa absorbs $3.50-$5.00 per order difference.
+
+CONTEXT — FINANCIAL DASHBOARD:
+Daniel built a Flask-based financial dashboard that imports from the master financials Excel workbook. It provides CEO-level overview (spending, funding, net position, inventory value, monthly burn), drop planning workbench for modeling new product purchases, vendor quote comparison, margin analysis, and a charity donation simulator. Shopify order sync is being implemented. This tool exists to help Rosa make data-driven drop and vendor decisions.
+
+CONTEXT — CONTENT STRATEGY (current):
+- Instagram (@pressurepoint.apparel): 3-4 posts/week, mix of short-form reels and carousel posts
+- Content pillars: Pressure Principles (philosophy), Storytelling (lived experiences), Memes/Humor, Fight Breakdowns, Motivational compilations
+- Self-expressive, emotionally-driven content focused on the "pressure" mindset
+- Monthly awareness posts (e.g., Mental Health Awareness Month)
+- Some outreach to BJJ/combat sports influencers and content creators — offering gifts or collaboration for brand awareness
+- ~300 followers after several months
+
+ATTACHED: Full business materials document including complete brand strategy framework (12 sections), competitive analysis with 7 competitor comparisons, full financial data (all spending by card, product margins with website vs gym pricing, net profit after shipping/fees, complete inventory tracker by product/drop/size, COGS breakdown, funding sources), current action plan with completion status, social media strategy and bios, and dashboard overview. Website screenshots attached as images (homepage, all product pages, collections, policies, contact, blog). Brand logo and product photography attached.

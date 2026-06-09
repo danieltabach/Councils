@@ -1,0 +1,47 @@
+# Domain Expert — stage2
+
+## Agreements
+
+**Reviewer A — Gap 2 (no-word control as central, not peripheral):** Reviewer A correctly identifies that the no-word control is not a "nice-to-have extension" but a falsification condition for the paper's central interpretive claim. I flagged this in my original review, but Reviewer A's framing is sharper: the hedge interpretation is the paper's most cited-ready result, and it is currently unfalsified within the paper. I agree this should be elevated from Future Work to a genuine limitation of the current claims.
+
+**Reviewer C — The inversion finding is underemphasized relative to its importance:** Reviewer C identifies that the 5:1 → 14:1 inversion is arguably more important than the overall 10:1 ratio and is currently buried in Section 4.2. I agree completely. The inversion is the most operationally dangerous pattern — the interface *looks* word-driven at low baselines and *becomes* state-driven at high baselines, invisibly to the operator. This belongs in the abstract. I mentioned the interaction structure in my original review but did not flag the abstract-level absence as a specific correctable problem.
+
+**Reviewer C — The three failure modes compound simultaneously near boundaries:** Reviewer C identifies that the paper never explicitly states that compression, state dominance, and mode-switching are all worst simultaneously at the most constrained operating point. This synthesis is the paper's strongest single claim and it is currently implicit. I missed this entirely in my original review. It is a genuine gap.
+
+**Reviewer E — The independence violation is more serious than acknowledged:** Reviewer E is correct that at T=0.0, four words produce the exact same value across all 30 runs, making those 30 runs effectively one observation repeated. The effective sample size for the no-context Spearman ρ is closer to 10 than 300. I flagged the independence issue in my original review but understated its severity. Reviewer E's point that the p-values are "essentially meaningless as inferential quantities" in this regime is technically correct. The right fix is computing ρ over word-level medians (n=10) with appropriate uncertainty, not over all 300 runs.
+
+**Reviewer F — The $250K figure is rhetorically overloaded:** Reviewer F correctly identifies that using a concrete dollar amount from a synthetic environment to motivate real-world concern is a rhetorical move that invites skepticism. I flagged this as a technical red flag in my original review. Reviewer F's suggested fix — stay in the allocation space (a 0.20 allocation difference) rather than converting to synthetic dollars — is the right prescription.
+
+**Reviewer E — The prompt confound between conditions:** Reviewer E identifies that the no-context prompt ("should spend [WORD] more time on innovation") and the context prompt ("I would like to [WORD] increase innovation") use different syntactic frames beyond just the presence/absence of the baseline number. I flagged this in my original review as a confound worth acknowledging. Reviewer E correctly notes this is a construct validity issue, not just a minor limitation.
+
+**Reviewer D — Mosteller & Youtz mischaracterization:** Reviewer D identifies that the paper describes Mosteller & Youtz as showing "high variance around ordered central tendencies" when the actual finding is that cross-study averages were relatively *stable* — almost the opposite emphasis. I did not catch this in my original review. This is a real bibliographic accuracy issue.
+
+---
+
+## Disagreements
+
+**Reviewer A — Cornerstone verdict leaning toward (b):** Reviewer A concludes the paper is "closer to (b) than the author's framing suggests." I disagree with this weighting. The paper's measurement instrument is genuinely novel in the action-production context. The distinction between probability estimation (Zhang 2024, Mosteller 1990) and action production is real and under-studied. The boundary behavior finding (hedge/act/abstain) is not a finding you would predict from the prior literature, and the drastically/dramatically discontinuity is a genuine empirical surprise. These are not characteristics of a "fine niche result with inflated framing." The paper is (c), but I would place it closer to (a) than Reviewer A does, conditional on the human survey and one cross-model replication. Reviewer A's verdict seems to discount the novelty of the action-production framing relative to the existing probability-estimation literature.
+
+**Reviewer A — "The differentiation funnel might be trivially expected":** Reviewer A argues that convergence near 89% might follow directly from the constraint structure — if there's no room to increase, all words produce the same small increase. This is partially correct but misses the most important part of the finding: the *abstention* behavior. The convergence of *action magnitudes* near capacity is indeed somewhat expected. What is not expected — and what the paper documents — is that some words trigger *complete abstention* (zero tool calls) while others continue to act. The constraint explanation predicts small actions for all words; it does not predict categorical refusal for some words and ceiling-pushing for others. Reviewer A's critique applies to the convergence finding but not to the mode-switching finding, and the paper's most important boundary result is the mode-switching, not the convergence.
+
+**Reviewer F — "Weak Accept" recommendation:** Reviewer F recommends Weak Accept for a workshop venue. I think this is slightly too conservative given the boundary behavior finding. The drastically/dramatically discontinuity — two near-synonyms producing categorically different action policies in identical system states — is a result that would be interesting to the NeurIPS alignment workshop or the ACL workshop on human-AI interaction regardless of the single-model limitation. The paper's methodological transparency (flagging inflated statistics, non-pre-registered splits, independence violations) is itself a contribution to norms in this space. I would recommend Accept for a workshop venue and Borderline for a full conference findings track, which is slightly more optimistic than Reviewer F.
+
+**Reviewer E — "Discontinuous" is too strong a claim:** Reviewer E argues that a single boundary point (89%) cannot establish discontinuity versus a very steep continuous function. This is technically correct and I agree the paper should hedge this language. However, I think Reviewer E understates how informative the 89% data is. The *categorical* nature of the abstention — 100% abstention for considerably/substantially/significantly, 0% for tiers 1-3, 7% for drastically — is not consistent with a smooth function. A smooth function would produce graded abstention rates across words. The all-or-nothing pattern within words is itself evidence of a categorical decision process, even from a single boundary point. The paper should say "consistent with discontinuity" rather than "discontinuous," but the finding is stronger than Reviewer E implies.
+
+---
+
+## Revisions to My Review
+
+**What I missed:**
+
+**1. The synthesis gap (Reviewer C's most important point).** I identified the three findings individually but never noted that the paper fails to state their simultaneous worst-case at the operational boundary. This is the paper's most important unclaimed result and it requires zero additional data. I would add this to my Technical Red Flags section: the paper has a finding it hasn't made.
+
+**2. The abstract-level absence of the inversion finding.** I discussed the inversion in my original review but did not flag that it is absent from the abstract. Given that the abstract is what gets read and cited, this is a more serious omission than I originally treated it. I would add this to my Baselines and Comparisons section as a framing issue.
+
+**3. The severity of the independence violation at T=0.0.** I flagged the independence issue but Reviewer E's analysis is sharper than mine: at T=0.0, the effective sample size for the no-context Spearman ρ is ~10, not 300. The p < 0.001 notation is not just "overstated" — it is misleading by approximately two orders of magnitude in effective n. I would strengthen my Technical Red Flags section accordingly and recommend the author compute ρ over word-level medians with a permutation test.
+
+**4. The Mosteller & Youtz mischaracterization.** I did not catch this. The paper describes "high variance around ordered central tendencies" when the source actually found relatively stable cross-study averages. This should be corrected.
+
+**What I stand by:**
+
+My core assessment — that the paper is (c) leaning toward (a) with the human survey and cross-model replication — is unchanged and is consistent with the strongest reviewers (B, C, E, F). My identification of the two-way Kruskal-Wallis as the correct statistical approach for the word × baseline interaction remains the most important statistical fix not flagged by other reviewers. My recommendation that the drastically/dramatically abstention text responses be analyzed (the model's actual language during abstention is data the author has but hasn't used) was not picked up by other reviewers and remains the cheapest high-value addition to the

@@ -16,12 +16,12 @@ class PersonaConfig:
 
 
 REVIEWERS: list[PersonaConfig] = [
-    PersonaConfig(name="Source Auditor", slug="source_auditor", model=MODEL_SONNET, web_search=True),
-    PersonaConfig(name="Methodologist", slug="methodologist", model=MODEL_SONNET),
-    PersonaConfig(name="Peer Reviewer", slug="peer_reviewer", model=MODEL_SONNET),
-    PersonaConfig(name="Domain Expert", slug="domain_expert", model=MODEL_SONNET),
-    PersonaConfig(name="Outsider / Red Team", slug="outsider", model=MODEL_SONNET),
-    PersonaConfig(name="Alignment Guide", slug="alignment_guide", model=MODEL_SONNET),
+    PersonaConfig(name="Field Cartographer", slug="field_cartographer", model=MODEL_SONNET, web_search=True),
+    PersonaConfig(name="Devil's Advocate", slug="devils_advocate", model=MODEL_SONNET),
+    PersonaConfig(name="Research Sequencer", slug="research_sequencer", model=MODEL_SONNET),
+    PersonaConfig(name="Alignment Insider", slug="alignment_insider", model=MODEL_SONNET, web_search=True),
+    PersonaConfig(name="Career Strategist", slug="career_strategist", model=MODEL_SONNET),
+    PersonaConfig(name="Skeptical PI", slug="skeptical_pi", model=MODEL_SONNET),
 ]
 
 CHAIRMAN_MODEL = MODEL_OPUS

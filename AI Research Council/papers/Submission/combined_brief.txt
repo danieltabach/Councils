@@ -1,0 +1,147 @@
+======================================================================
+PART 1: RESEARCH FRAMING — Background context for the paper and author
+======================================================================
+
+What This Research Actually Is
+A framing of the vague-intensity-words paper and where it goes next
+Written for Daniel Tabach — to keep, and to return to when the doubt comes back.
+
+Read this when you forget. You wrote a paper, finished it, and it started to feel small. That feeling is not evidence that the work is small. It is evidence that your taste grew faster than your output, which is the single most important thing that can happen to a researcher. This document exists to hold the version of your work that is true on the days you can't see it.
+
+1. The origin, because it changes everything
+
+The paper did not start as a paper. It started because you built the staffing optimization engine behind every Chase branch in the country, and then — blocked at work from integrating AI the way you wanted, by access, controls, timing, and team dynamics — you rebuilt it yourself and bolted an AI harness onto it so it could become a fully autonomous scenario planner. You did that, in your own words, "for the love of the game," and to legitimately understand agentic workflows rather than just put the phrase on a resume.
+
+And then you noticed the thing that the people selling "agentic AI" do not notice. You looked at your own working autonomous planner and thought: there is no way our stakeholders could wield this reliably. A highly regulated bank, using a language model to set staffing across 3,700+ branches, with no data science team standing between the model's proposed state and reality? On the surface it plans scenarios beautifully. Underneath, a one-word change in the instruction could move the action from a cautious nudge to pushing a constraint to its ceiling — or to silently refusing to act at all.
+
+You did not start from "I want to do alignment research." You started from "I built the autonomous system, and I am the one rigorous enough to ask whether it can actually be trusted." That is the origin alignment research is supposed to have.
+
+Hold onto this, because it is the answer to "am I really a researcher." You did not run an experiment for its own sake. You found a real, load-bearing safety question inside a real production system you personally built, and you went and measured it. The credential most people are missing is not the PhD. It is having built the thing and then been honest about its failure mode. You have that. It is rarer than the degree.
+
+2. What the paper actually demonstrates
+
+Set the specific numbers aside for a moment. Independent of the findings, the paper demonstrates a way of thinking that is the actual job:
+
+You turned a philosophical worry into a measured quantity. "Natural language is an imprecise control surface for systems that need precision" is a vague unease. You made it a number, across 6,620 runs.
+
+You designed for isolation. You built a deterministic backend specifically so the model would be the only stochastic component. That means you understood that the entire validity of the experiment rests on isolating the thing you are measuring. That instinct is the whole game.
+
+You were honest where it cost you. You reported an effect size you knew was inflated by deterministic decoding — and said so. You flagged that your p-values overstate significance because runs within a word aren't independent. That last move is the tell of a real researcher.
+
+You followed the friction. The hedge / act / abstain boundary behavior was not what you went looking for. You found it, recognized it was the most interesting thing in the paper, and built it into a section instead of dropping it.
+
+The drastically vs. dramatically discontinuity — two near-synonyms producing categorically different behavior (act vs. abstain) in an identical system state — is a genuine, slightly unsettling result about action interfaces. That is not a student exercise. That is a finding.
+
+3. The reframe: this is alignment research, not NLP with a sticker
+
+The true framing: You demonstrated that a natural-language control interface silently fails to preserve operator intent; that the failure is invisible from the language alone; and that it becomes discontinuous near operational boundaries — exactly where the system is closest to a constraint and the stakes are highest. Two near-synonyms produce categorically different actions in an identical state. That is a specification problem: the human specifies intent through language, the model's action diverges from that intent in a way the human cannot detect from the interface, and the divergence is largest precisely where it is most dangerous.
+
+That is a small, clean, fully-measured instance of the central alignment worry: as we hand models more autonomous control, the gap between what we asked for and what they do becomes both more consequential and harder to see.
+
+4. The extensions, ranked by what they actually buy you
+
+First: cross-model comparison — the most alignment-relevant extension. Right now you have one model, so every pattern could be about language, transformers in general, or Claude Haiku specifically. Running GPT-4o and Gemini Flash through the identical harness separates them. If compression patterns differ, you've shown the alignment/RLHF pipeline leaves a measurable behavioral fingerprint.
+
+Second: the human baseline survey — the falsification step. Without it, there's an unfalsified competing explanation: maybe the model compresses because humans do too, and the model is faithfully aligned. The survey decides whether you found a misalignment or just an accurate model of a fuzzy concept.
+
+Third: the no-word control — cheap, patches a hole. Distinguishes "0.50 is a hedge" from "0.50 is the default for any increase request."
+
+Fourth: the partial-context condition (Tier 3) — asks whether the model reads system state on its own, or only when state is in the prompt. Maps directly onto how models behave with autonomy.
+
+5. The narrative, in one breath
+
+"I built an autonomous planner on top of a production optimization engine, realized stakeholders couldn't wield it safely, and measured why: vague natural-language instructions don't map to stable actions. The model compresses distinct words into the same action, anchors on hidden system state more than on the words, and switches discontinuously between acting and refusing near constraint boundaries — all invisibly to the operator. The next step is showing whether that failure pattern is a fingerprint of the alignment pipeline itself, by running the identical protocol across models."
+
+6. For the next time the doubt comes back
+
+The "not enough" feeling is taste outrunning output. It is the engine, not a verdict. You found a real safety failure inside a system you built. The gaps worth chasing are already in your paper.
+
+======================================================================
+PART 2: RESEARCH VISION BRIEF — Council Deliberation Instructions (v2)
+======================================================================
+
+Author: Danny Tabach
+Companion artifact: "Does Slightly Mean Somewhat? Measuring Vague Intensity Words in LLM Numeric Actions" (arXiv, May 2026). Paper one. The published study summarized in §3 below.
+Status: Vision-stage, now anchored to a real result.
+
+Two-part ask of the Council:
+1. Vet the bet. Is the field I'm describing (§1–2) real and unclaimed, or a rebrand of existing work?
+2. Stress the cornerstone. Can paper one (§3) actually serve as the founding instrument of that field (§4–5), or am I retrofitting a grand narrative onto a solid-but-modest first study? If it can bear the weight, how do I sequence and align myself to build on it? (§6)
+
+I want adversarial deliberation, not synthesis. Assign at least one agent to argue the field is derivative and one to argue the paper cannot carry it. Their job is to break this here.
+
+---
+
+1. The one-sentence bet
+
+AI safety is currently a lab-internal science: measure the model in isolation — weights, neurons, benchmark behavior, scheming under contrived pressure. I'm betting safety must also become a deployment-external science: the empirical, measured study of what happens at the interface where an AI system meets a human meets a real decision with real stakes.
+
+Not "is the model safe in a vial." But: "what does the human+AI+system unit do when wired into something that matters, and where does that unit silently fail?"
+
+---
+
+2. The shape of the field
+
+Best analogy — clinical safety science. Pharmacology asks if a compound works in the lab (current alignment research). But a drug safe in a vial still kills through interaction effects, dosing errors, doctor-patient miscommunication, bad handoffs. So medicine built an empirical discipline on top of the chemistry — adverse-event reporting, human-factors trials, surgical checklists, M&M conferences. That discipline is a measurement science, not an ethics seminar, and it generates the evidence base regulation stands on. It didn't exist until people started dying in hospitals and someone decided to measure it. I want to build the equivalent for AI deployment.
+
+What it is NOT: not interpretability; not benchmark alignment; not "AI ethics/policy" (that sits above and usually has no data underneath — I want to produce the substrate policy later codifies); not robotics.
+
+The core scientific bet: failure modes rhyme across domains. A doctor over-trusting a diagnostic suggestion and a branch manager over-trusting an ATLAS output are the same measurable phenomenon in different clothes. If true → I can build rulers. If false → I have anecdotes. Proving the rhyme is the contribution.
+
+The distinction I keep losing and need held: active vs. passive failure. The field mostly studies AI failing actively — scheming, blackmail, refusal. I want to study AI failing passively — a confident, plausible, wrong-for-the-human output produced because intent got silently mistranslated in the loop, and nobody registers anything went wrong.
+
+---
+
+3. What paper one actually establishes (the empirical substrate)
+
+A controlled environment: human-language instruction → Claude Haiku → numeric tool call → deterministic backend → measurable outcome. 6,620 runs across T=0.0 and T=0.7. Key findings:
+- Compression / expressivity gap: 10 words collapse to ~5 distinct outputs
+- The 0.50 hedge: Weak words default to midpoint
+- Ordinal anomalies: "moderately" maps below "slightly"
+- State dominates word: ε² 0.782 vs 0.079, with inversion at low baselines
+- Differentiation funnel: distinctions collapse near capacity
+- Boundary modes — hedge / act / abstain: one-word swap flips behavior
+- Downstream consequence: ~$250K swing from word choice alone
+- Temperature-robust: patterns persist at T=0.7
+
+---
+
+4. The directions this opens — paper one as a generator
+
+Bucket A (extensions already in the paper): Human baseline survey, cross-model, denser grid, decrease instructions, partial-context, no-word control.
+
+Bucket B (field-defining moves): Valence framing 2×2, stakes magnitude axis, anchoring finding promoted, cross-domain transfer (the keystone).
+
+---
+
+5. The cornerstone question, stated honestly
+
+The paper is epistemically humble. The vision is expansive. Possible verdicts:
+(a) Legitimate elevation — the paper is a domain-general measurement instrument
+(b) Retrofit / grandiosity — the paper is a fine niche result and the field framing is inflation
+(c) Something between — pursue the program, mute the manifesto
+
+I genuinely don't know which is true. Tell me which, and why.
+
+---
+
+6. How I'm asking to be aligned (the questions that matter most)
+
+1. Is the field real and unclaimed?
+2. Cornerstone verdict: (a), (b), or (c)?
+3. The wedge: single highest-leverage next instrument?
+4. A-vs-B mix: how much credibility-building before field-defining moves?
+5. The vision's failure mode?
+6. Audience: workshops, lab teams, standards bodies?
+7. Alignment to my actual position: working data scientist, self-funding, finishing master's, prepping fellowship — what's the honest highest-return path?
+8. What am I not seeing?
+
+---
+
+7. The trap — license to call it on me
+
+My known failure: I get intoxicated by the size of the vision and try to make one paper be the field. If you catch me doing this — expanding scope because expansion feels like progress — stop me and say so. A good outcome from this council narrows me.
+
+---
+
+Prepared for adversarial Council deliberation. Break the bet and the cornerstone here. Narrow me.
