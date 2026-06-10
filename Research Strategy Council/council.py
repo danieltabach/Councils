@@ -535,9 +535,14 @@ async def run_council(args: argparse.Namespace) -> None:
 
     running_cost = 0.0
 
-    # Extract figures
-    tex_dir = Path(args.paper_path).resolve().parent
-    figures = extract_figures(paper_text, tex_dir)
+    # Extract figures (unless --no-figures)
+    figures = []
+    if not args.no_figures:
+        tex_dir = Path(args.paper_path).resolve().parent
+        figures = extract_figures(paper_text, tex_dir)
+    else:
+        _log("Figures: SKIPPED (--no-figures)")
+
 
     # Stage 1
     stage1 = await run_stage1(client, paper_text, brief, REVIEWERS, semaphore, figures)
@@ -643,6 +648,10 @@ Examples:
     parser.add_argument(
         "--skip-deliberation", action="store_true",
         help="Skip Stage 2 deliberation (faster, cheaper)"
+    )
+    parser.add_argument(
+        "--no-figures", action="store_true",
+        help="Skip loading figures from LaTeX (saves tokens and cost)"
     )
     parser.add_argument(
         "--dry-run", action="store_true",

@@ -1,47 +1,68 @@
 # Research Sequencer — stage2
 
-### Agreements
+## Agreements
 
-**Advisor F (Cornerstone Verdict) on the human baseline as the load-bearing gap:** F's framing is the sharpest version of what I said. The specific formulation — "you don't know what you're measuring" without a human baseline — is more precise than my version. I said the human baseline is the wedge paper; F explains *why* with more force: without it, you cannot distinguish model failure from linguistic ambiguity, which means the entire "passive failure" framing is built on an unvalidated assumption. I agree completely and wish I had said it this cleanly.
+**Advisor A — "Finding 3 is your genuinely interesting finding"**
+Completely agree. Advisor A is the most direct about this and I should have been equally blunt in my original review. The compression finding is expected; the three-mode boundary behavior is not. I said this but buried it. Advisor A made it the lead. That's the right call.
 
-**Advisor D (Devil's Advocate) on the boundary abstention finding as the paper's sharpest contribution:** D identifies the drastically/dramatically flip as the one finding that is genuinely hard to explain away and doesn't have a clean precedent in adjacent literature. I agree. My review treated the human baseline as the wedge; D's point reinforces why the boundary behavior is what makes this work worth defending — it's the finding that most clearly demonstrates the failure mode is *discontinuous and invisible*, not just noisy. The sequence implication: Paper 2 should be designed to test whether this boundary behavior generalizes, not just to add a human comparison.
+**Advisor B — "The action/estimation distinction is the moat"**
+Agree strongly. The distinction between measuring probability *estimation* (what prior work does) and measuring constrained *action execution* (what this paper does) is the core novelty claim. Advisor B articulates this more precisely than I did. Daniel should be able to state this distinction in one sentence in every abstract and introduction he writes going forward.
 
-**Advisor C on the IRB timeline as the most time-sensitive dependency:** C names this explicitly and correctly. I mentioned IRB as a dependency but didn't flag it as a hard deadline tied to institutional affiliation. C is right that finishing the master's creates a closing window for Georgia Tech IRB access. This is a sequencing constraint I underweighted.
+**Advisor C — "The feasibility-regime inversion is underplayed"**
+Agree. Advisor C correctly identifies that the split-range analysis result — word dominates at low baselines, context dominates at high baselines — is a *regime change* in the model's action policy, not just "context matters." I mentioned this but didn't name it forcefully enough. That framing is stronger and more publishable.
 
-**Advisor E on targeting NLP/deployment-safety venues before alignment venues:** E's argument that the paper should establish credibility in the NLP safety community before attempting alignment venues is sound sequencing advice. I implicitly assumed alignment venues were the right target; E makes a better case for why the NLP empirical community is the right first audience and the alignment community is the second.
+**Advisor D — "Do not lead with AI Safety and Alignment"**
+Agree completely. "Agentic tool-use reliability" or "language-to-action fidelity" is more precise, more timely, and less likely to invite the wrong reviewers. I said something similar but Advisor D's specific framing is better.
 
-**Advisor A on the "action case" being genuinely distinct from the "estimation case":** A's point that the paper's novelty claim requires demonstrating that the action context produces qualitatively different phenomena — not just quantitatively different ones — is correct. The boundary abstention behavior is the candidate for this distinction. My review didn't make this argument explicitly enough.
-
----
-
-### Disagreements
-
-**Advisor B (my own review) on cross-model belonging in Bucket B:** I stand by this reclassification but want to sharpen the argument in response to what other advisors said. Advisors C and E both treat cross-model as a credibility move. I think they're wrong about the *sequencing* even if they're right about the *function*. Cross-model without a human anchor produces a comparison without a reference point. The interesting question isn't "does GPT-4o compress differently than Haiku?" — it's "which model is closest to human calibration?" You can only ask the second question after Paper 2. Running cross-model second wastes the result.
-
-**Advisor D on the "new field" claim being unsupportable:** D argues the field is derivative at 7/10 confidence. I think D is correct that the "new field" framing is premature, but I think D underweights the genuine novelty of the boundary abstention finding. D acknowledges this at the end of the review but then doesn't revise the overall verdict. The boundary behavior — where swapping near-synonyms produces categorical action switches — is not documented in the vague quantifier literature, the prompt sensitivity literature, or the automation bias literature in this specific form. That finding alone is sufficient to justify a research program even if the broader "passive failure" framing is overreach. D's 7/10 confidence on derivativeness is too high; I'd put it at 5/10 once you isolate the boundary behavior as the core contribution.
-
-**Advisor F on mechanistic interpretability being off-limits:** F says "don't go there" for resource and expertise reasons. I agree with the resource argument but think F dismisses it too quickly on strategic grounds. The right answer isn't "never" — it's "not now, and not solo." If Paper 3 (cross-model) shows that different models produce different boundary abstention patterns, the natural next question is *why* — and that question points toward mechanistic work. The path is: establish the behavioral phenomenon across models first, then bring in a collaborator with mechanistic expertise for a later paper. F treats it as a permanent detour; I'd treat it as a deferred collaboration.
+**Advisor F — "The co-authorship problem is your biggest structural gap"**
+Agree, and I underweighted this. Solo ArXiv papers don't move the needle at frontier labs the way one co-authored paper with a known researcher does. This is a career constraint, not just a research quality issue.
 
 ---
 
-### Revisions to My Review
+## Disagreements
 
-**What I missed: The IRB as a sequencing constraint, not just a resource constraint.** I flagged IRB as a dependency but treated it as a planning item. Advisors C and F both make clear it's actually a hard deadline tied to institutional affiliation. This changes the sequencing logic: the IRB application isn't something you do when you're ready to run the human baseline study — it's something you file *now*, in parallel with everything else, because the window may close when the master's degree completes. I would revise my Paper 2 recommendation to add: "File the IRB application before you do anything else. It runs in parallel. Do not treat it as a future work item."
+**Advisor A — "Don't pursue mechanistic interpretability"**
+I agree mech interp is a distraction *right now*, but Advisor A's dismissal is too categorical. The specific argument — "their token embeddings are close in representation space, boring result" — is actually not guaranteed. The *boundary switching* behavior (why does *drastically* push to ceiling while *dramatically* abstains?) is not obviously explained by embedding proximity. If Daniel develops the behavioral map first across multiple models and finds consistent boundary switching, *then* a targeted mech interp question about that specific discontinuity becomes tractable and interesting. The sequencing matters. Mech interp is wrong for Paper 2; it might be right for Paper 4.
 
-**What I missed: The drastically/dramatically finding as the organizing center of the research program.** My review treated the human baseline as the wedge because it closes the most significant methodological gap. But Advisors D and F both point to the boundary abstention behavior as the finding that is hardest to explain away and most clearly demonstrates something genuinely novel. I should have made this the organizing center of the sequence, not just a finding to replicate. Revised framing: the research program is fundamentally about *discontinuous behavior at operational boundaries* — the human baseline and cross-model studies are in service of establishing whether this discontinuity is a model artifact or a general property of language-action interfaces. That's a sharper program than "measuring vague intensity words."
+**Advisor B — "EMNLP 2026 is your best venue"**
+I think this overstates the fit. EMNLP is primarily an NLP venue and the linguistics framing of this work is its weakest dimension. The paper's strength is the *agentic systems* framing, not the linguistics framing. Venues like NeurIPS workshops on agents/safety or FAccT are better fits than EMNLP main. EMNLP workshops are fine but I wouldn't call it the best venue.
 
-**What I missed: The venue strategy needs more specificity.** Advisor E provides a more detailed venue roadmap than I did. I said "EMNLP or ACL" without specifying what the paper needs to demonstrate to succeed there. E's point that the paper needs a human baseline before EMNLP submission is correct and I should have said it explicitly.
+**Advisor D — "OpenAI Safety Fellowship running September 2026 through February 2027"**
+I can't verify this specific fellowship exists as described, and presenting unverified fellowship details as concrete advice is risky. Daniel should verify independently before planning around it. The broader point — that fellowships exist beyond Anthropic — is correct and useful.
 
-**What I would not change:** The core sequencing recommendation — human baseline first, cross-model third, field-defining synthesis fourth — stands. The other advisors' reviews don't provide a compelling argument for a different order. D's devil's advocate review actually strengthens the case for getting the human baseline before anything else, since D's strongest objection is that the paper can't distinguish model failure from linguistic ambiguity without it.
+**Advisor F — "The valence/stakes study is Paper 3"**
+I agree with the sequencing but want to push back on one thing: Advisor F frames the valence study as primarily about whether models behave differently under high-stakes framing. The more interesting version of that question, which nobody has fully articulated, is whether the *three-mode boundary behavior* (hedge/act/abstain) is amplified or suppressed under high-stakes framing. That's a tighter, more testable hypothesis than "does the model behave differently?" and it directly extends the most novel finding from Paper 1.
 
 ---
 
-### Blind Spots
+## Revisions to My Review
 
-**The model deprecation problem is underaddressed by all advisors.** Advisor D mentions it briefly in the "program survivability" section, but no advisor addresses the strategic implication: Claude Haiku (specifically `claude-haiku-4-5-20251001`) will be deprecated. When it is, the baseline for the entire research program shifts. This is not a minor concern — it means the cross-model paper needs to be run while Haiku is still available, and the human baseline study needs to be completed before the model changes. The sequence has a hidden time pressure that none of the advisors named explicitly: the window to run comparative studies against the *same* model version that Paper 1 used is closing, not just the IRB window.
+**What I missed: The no-word control is more important than I signaled.**
 
-**No advisor addressed the "no-word control" as a sequencing priority.** The paper itself flags this as a limitation: without a condition where the model receives an increase instruction with no intensity modifier, the 0.50 hedge interpretation is ambiguous — it might be the model's response to any increase request, not specifically to weak intensity words. This is a cheap, fast, solo-executable addition that would sharpen the central interpretive claim of Paper 1. It should be collected immediately, before Paper 2, and either added to Paper 1 as a revision or incorporated into Paper 2's design. No advisor mentioned it despite the paper flagging it explicitly.
+Multiple advisors flagged this but I listed it as a secondary addition. It's actually a prerequisite for the central interpretive claim. If "increase innovation" with no intensity word also produces 0.50, then the entire "hedge" interpretation collapses — 0.50 is just the model's default for any increase instruction, and the compression finding loses its meaning. This is a $2-3 API cost experiment that should be run *before* the cross-model study, not alongside it. I would revise my sequencing: run the no-word control first (one weekend), confirm the hedge interpretation holds, then proceed to cross-model replication.
 
-**The benchmark/shared task opportunity is mentioned by Advisor A but not developed by anyone.** A notes that a benchmark or shared task is the highest-leverage single artifact for seeding a research community. No advisor develops what this would look like or how to pursue it. For a self-funded researcher, a well-designed benchmark that other researchers can run against their own models is a force multiplier — it generates citations, creates community, and establishes the measurement instrument as a standard rather than a one-off. The harness already exists. Packaging it as a reproducible benchmark with a leaderboard is a concrete action that no advisor recommended but that could have outsized impact relative to cost.
+**What I underweighted: The production systems angle as a differentiator.**
 
-**The decrease instruction asymmetry is underweighted as a near-term result.** Multiple advisors mention it, but none flag that it's the cheapest possible extension — same harness, same API, same analysis, just flip the direction — and it directly addresses one of the paper's stated limitations. It should be collected *this week*, not treated as a future paper.
+Advisor F makes this point and I made it briefly, but I should have been more aggressive about it. Daniel's JPMC background is not just backstory — it is construct validity that most academic researchers cannot claim. The reason the allocation environment is a credible measurement instrument is that Daniel has actually built one at scale. That should be in the abstract, not buried in the introduction. "We study this problem using a synthetic environment modeled on production-scale constrained optimization systems" is a stronger opening than the current framing.
+
+**What I should revise on IRB:** My Path 3 recommendation (reframe to avoid human comparison) was correct but I didn't give enough weight to Advisor B's specific suggestion about Vogel et al. (2022) and Cliff (1959) as existing human data sources. Using published psycholinguistic distributions as a reference baseline is methodologically cleaner than I implied — it's not a workaround, it's a legitimate scientific move. I'd revise my recommendation to: use Cliff (1959) and Mosteller & Youtz (1990) for the ordinal validation claim in the current paper, and treat the direct human comparison as a clean follow-up study rather than a gap.
+
+---
+
+## Blind Spots
+
+**All advisors missed: The decrease direction is not just a robustness check — it's a different paper.**
+
+Every advisor who mentions decrease instructions treats it as a minor extension ("add it at minimal cost"). But asymmetric boundary behavior between increase and decrease directions would be a *substantive finding* about how LLMs handle directional constraints. Near the lower boundary (0-10% allocation), does *drastically decrease* push to the floor the way *drastically increase* pushes to the ceiling? Or does it abstain? Does the hedge/act/abstain structure mirror or invert? If the behavior is asymmetric, that tells you something about how the model represents feasibility constraints directionally — which has direct implications for any agentic system with both upper and lower bounds. This deserves its own experimental design, not a footnote.
+
+**All advisors missed: The Algoverse fellowship is underutilized as a peer review mechanism.**
+
+Every advisor treats Algoverse as a resource for compute and connections. Nobody suggests using it as a pre-submission review venue. Daniel should be presenting his cross-model results to the Algoverse cohort before submission — not for validation, but to stress-test the framing and find the holes reviewers will find. The mech interp suggestion came from Algoverse colleagues; that means there are people in that cohort who think carefully about these systems. Use them as adversarial reviewers, not just supporters.
+
+**All advisors missed: The round-number anchoring finding needs a formal test, not just a mention.**
+
+Every advisor treats the round-number anchoring observation as a preliminary note. But this finding — that the model's output format mirrors the input format (round baselines produce round outputs, irregular baselines produce irregular outputs) — connects to a specific and testable claim about how LLMs process numeric tokens. A denser baseline grid (every 5%, which is achievable on open-source models at zero cost) would let Daniel run a formal test: do outputs cluster at round values significantly more often when baselines are round? If yes, that's a publishable finding about numeric representation in LLMs that is orthogonal to the intensity word question and could anchor a separate short paper.
+
+**All advisors missed: The submission timing for NeurIPS 2026 workshops requires knowing which workshops exist.**
+
+Every advisor says "target NeurIPS 2026 workshops" but NeurIPS 2026 workshop proposals are typically submitted and accepted in spring, with the final workshop list announced in summer. Daniel cannot submit to a workshop that hasn't been announced yet. The practical advice is: (1) check the NeurIPS 2026 workshop list when announced (typically June-July), (2) have a submission-ready paper by then, (3) identify 2-3 target workshops from the announced list. The backup plan if no suitable workshop exists is EMNLP 2026 workshops (October) or ICLR 2027 workshops. Daniel needs a contingency plan,

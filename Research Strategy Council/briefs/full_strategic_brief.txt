@@ -1,0 +1,133 @@
+WHO I AM
+
+Daniel. Data Scientist at Chase, 5 years. Developed an MILP platform called ATLAS / BAR (replicated a similar algorithm for the paper) to staff all Chase branches in the country: forecasted lift? 9 Billion. My knowledge stems in optimization, machine learning modeling in general, SQL, python, etc. I am dipping my toes into AI research - I want to work on AI research strongly - it's a passion I really am enjoying and am getting a chance to read into and work with. I am currently doing this as my own side-hobby.
+
+Institution: Georgia Tech - last semester will end in Dec 2026. Online masters program (OMSA). Not a PhD. I don't know any PIs, I don't have money.
+
+Research affiliation: Algoverse - just got accepted and am currently a fellow there.
+
+ORIGIN STORY
+
+When I built BAR - it is a production level optimization engine. It is config driven - it can integrate new roles that we design that Chase launches. It allocates staff based on historic demand, value of each banker doing each type of task etc. The general structure is built in the paper (non-proprietary - same concept and algorithm framework).
+
+I wanted to first just get a stamp on my resume of 'Agentic workflows' and work on RAG systems. I realized the real value wasn't if this model was used with RAG - like sure - you can obviously use RAG to query aggregate information... but where this would really benefit is if this was used as a powerful scenario planner with AI integration.
+
+The goal? What if we can allow our stakeholders to use the model directly. Right now - a data science team (me and team) sits between the model output and our business partners. But whenever we iterate - we often have a lot of questions from stakeholders like "What if we allocated more servicing hours to the ARB role? will that improve their allocation in these branches?"
+
+The process often goes to us - where we iterate - tweak the model - run the output - and return it to them with an explanation. What if this could be cut out? What if they could directly access the model?
+
+Then I realized - they can't. An AI that automatically changes the technical configuration of possible levers in a solver would lead to downstream impact that can't be stable or guard-railed. A simple change in language or meaning can lead to numeric outcomes that were either unintended, too unpredictable or non-repeatable. So I decided to isolate the problem to it's very barebones - how do vague intensity words (slightly, moderately, dramatically) impact numeric output?
+
+This is JUST a small subset of the whole problem. A subset that can be measured and understood.
+
+THE PAPER
+
+The paper is attached as reference material. Preprint on ArXiv. This paper is result-oriented. It shows glimpses of MULTIPLE potential full on research topics.
+
+Strongest findings (in no particular order):
+
+1. Words are not *perfectly* ordinal - many words can collapse into the same numeric meaning.
+   - "Slightly, Marginally, Somewhat, Mildly" outputted the same numeric output.
+   - "Moderately" for Haiku seemed to go lower...? To .45 which was odd.
+   - But then once we went to words that inherently we would think had stronger meaning - the allocation suddenly changed.
+   - Considerably, Substantially, Significantly, and Drastically started to actually allocate ordinally almost...
+
+2. There are indications that the underlying baseline you START with in context ("The current baseline is 32%, slightly increase..."), if you start with numbers that end in 0s or 5s - the numeric increase will ALSO end in a 0 or 5. But if you start with a number like 33, 21, 53, 89... you'll see the numeric allocation is actually reflected to be oddly structured as well (.1632, .1554, etc) and so on. These are just examples I am making these results up from memory but the exact numbers and behaviors can be seen in the paper.
+
+3. There is an odd behavior that shows promise. If you set the allocation baseline *already* high enough that there isn't much room to close the gap - the model resorts to 3 distinct behaviors *only* depending on the word choice you use. It can either "hedge" - I call it hedge because it is my hypothesis (I know this is untested) that the model can't necessarily make up it's mind about words that are different in meaning but might mean the same thing in context - so it picks a simple value to use. Or it can abstain - it can literally refuse to call the tool because it sees there is *no where* to go in terms of adding allocation. BUT, in some cases it really does allocate more depending on the word.
+   - This is indicative that there might be some instances where the model can switch behaviors under the same exact limitations - but only under different word choices used - identical prompt and context - different numeric word choice. This finding is intriguing.
+
+Biggest known limitations:
+
+1. There is no human baseline - and IRB is time-costly and expensive. I am averse to going to IRB if I can somehow avoid it. I don't know if this means finding better sources - reframing the problem - or pivoting to a different topic entirely. I understand IRB and a human baseline is probably valuable - but the process might be costly and difficult to implement properly and scientifically. If there are ways around this - I want to find them.
+
+2. There is no cross-model comparison. Yeah I know - but I'll do this. Not a problem. Currently my next idea is to just use open source models since I can't afford running powerful models in many many experiments.
+
+WHAT I WANT TO DO NEXT
+
+I would ideally love to publish at NeurIPS workshop or something similar. I am in Algoverse, and I'd like to use this time and the resources available to do something impactful and make a real contribution to AI Research. I want to maybe identify another research gap - or extend this - or find something I can do with this. It doesn't even have to be THIS topic.
+
+My extension ideas:
+- I wanted to run on a larger number grid
+- I wanted to obviously do cross-model comparisons, maybe GPT-4o and Gemini Flash for just the general comparisons - and open source deep-dives since I can do more.
+- I was also wondering if this could be a valence study - does the same allocation problem change in higher stakes?
+  - Like for example: context given like "This is a factory for automating robots" or imagine "This is allocation of ICU beds". Does it behave differently?
+  - Does it behave differently if it is something targeting itself? "This is allocation for model thinking ability"
+  - Can we see differences in behavior if we add negative and positive risk context? I.e., "change x... if you fail, you will cause [consequence]" or "change x... if you succeed you will cause [good consequence]" see what I mean?
+- Can we do a different topic aligned to AI safety? What is the current literature looking at? Can we somehow tie this to something production / business oriented? Vague intensity words are just a slice.
+- I was also thinking - if the agent had prior knowledge of the stakeholder - do they behave differently?
+  - i.e., "The stakeholder is an analyst" vs "the stakeholder is a decision maker and has to launch this across 4000 locations".
+
+Directions others have suggested:
+- Some on Algoverse suggested I can go the mechanistic interpretability route to deep dive into *why* it believes the same words yield the same results - and why other words don't. What do the neurons show?
+- Some also mentioned that this can be rerun and tested on open models.
+- Also a suggestion to fine-tune and see if you can actually create guardrails or some sort of inherent ordinality (tough to do with no baseline from humans).
+
+What direction am I leaning? I am open to all and anything. Genuinely. I just want to do something interesting that will have the most ideal ROI for my goals. I am trying to work at a frontier AI lab one day - and I want to show I can *think* about these systems like they do.
+
+This paper started as a safety/alignment piece centered around Human-AI interaction. My general gut feeling is in the future - there will NEED to be a stronger study and stronger guidelines and guardrails for how humans interact with AI in production systems - and that is something I am interested in. I am NOT an MLE or an AI engineer. So the mech interpretability piece is fine - but I want to see other ideas first. I don't mind diving into this either it could be very interesting. I don't have any strong preferences but I want sincere and genuine ideas.
+
+THE IRB QUESTION — DELIBERATE ON THIS
+
+If there is ANYWAY to avoid an IRB problem - I want to hear it. If it's unavoidable then fine. Deliberate extensively. Use search. I genuinely don't want to go through huge problems with IRB. If I can get an exempt - or find a good source - or pivot this entirely - I will just to avoid this IRB issue. If there is a way to blend my thesis or research - or move it a bit to get away from the human baseline nonsense - I want to explore it at least. The IRB option is unattractive because...
+1. I am in OMSA - an online program at GaTech. I am in a masters program. Not a PhD. I don't know any PIs, I don't have money.
+2. I have NO idea how long this process is and I would rather not spend money on fancy survey sites for answers from people.
+
+If I really can't avoid it - I'll go for it. But I want to explore options. Don't just avoid this at the cost of a good paper. But bring me options.
+
+RESOURCES AND CONSTRAINTS
+
+Budget: Self-funded on personal budget. Under $200 ideally. I have $150 in Anthropic Credits. I would ideally not like to hurt my wallet.
+
+Compute: I have a gaming rig, Nvidia GeForce RTX 3070. I can use Google Colab from Algoverse. Not sure what GPUs they will provide. I can rent out GPUs but hopefully not expensive.
+
+Time: Part-time (nights/weekends alongside day job). Finishing degree with some research time built in.
+
+Collaboration: Working solo but part of Algoverse fellowship cohort.
+
+GOALS AND POSITION
+
+Where I want to be in 2-3 years: At OpenAI, Anthropic, DeepMind. It's ambitious - why would they take someone with 4 YOE at JPMC and 2 YOE from a startup? I need proof to back it up. It's a pipe dream honestly. I want to work at Google maybe. I want to work with these big companies and push the boundaries of research.
+
+Community: Human-AI interaction, AI Safety, AI deployment across businesses and how to best manage it safely.
+
+Fellowships: Anthropic Fellowship program is the only one I know. If you have other advice I'd love to know with my background. I am not good at coding under interview pressure (I am studying for the Anthropic OA) so I can pass the screens at least.
+
+Publication record: Just 2 ArXiv papers.
+
+FRAMING
+
+I currently frame this as AI Safety and Alignment, but it also leans Human-AI interaction. I am uncertain - I think it could be framed multiple ways. I have yet to hear enough feedback from PIs.
+
+THE #1 QUESTION
+
+Where do I go from here? How do I get a real workshop paper ready by August for NeurIPS or a similar workshop?
+
+WHAT WORRIES ME
+
+I am inexperienced. This is new to me. It's also not technical enough compared to some papers. It might not contribute enough. It's not ideal due to not having a human baseline. It's also... kinda expected?
+
+WHAT NOT TO TELL ME
+
+The PhD piece... I don't know if that's what I want to pursue. It requires quitting my job. I would only quit my job to join a frontier AI lab - even for an internship or a chance.
+
+SUPPLEMENTARY: MY RESUME
+
+Daniel Tabach
+(646) 258-2629 | Danieltabach42@gmail.com | danieltabach.github.io | linkedin.com/in/DanielTabach
+
+Summary: Senior Data Scientist with 5+ years building experimentation frameworks, causal inference systems, and decision platforms at scale. Built ATLAS/BAR across 4,300+ Chase branches and designed event-study DiD analyses that drove nationwide role redesign. Published two solo ArXiv preprints on LLM tool-use behavior and AI writing detection.
+
+Skills: Python, SQL, R, Spark | PuLP (MILP), XGBoost, PySpark, Scikit-learn, Snowflake, Streamlit, Looker, Fivetran, Supabase, Hugging Face | ML, Difference-in-Differences, Matched-Pairs Causal Inference, A/B Testing, Constrained Optimization, LLM Evaluation, Agentic Tool-Use, Prompt Sensitivity Analytics, Human-AI Evaluation
+
+Experience:
+- JPMorgan Chase (Senior Data Scientist, Aug 2022-Present): Built automated decision platform replacing manual staffing across 4,300+ branches, integrating causal value estimation with constrained optimization for ~24K FTEs. Projected $9B annual balance growth. Designed A/B/C experiment and event-study DiD framework for national role launch across ~1,200 branches and 10k employees. Coordinated across 7+ teams.
+- SwagUp LLC (Product Data Analyst, Dec 2019-Oct 2021): Drove $5M+ incremental profit and 40% revenue growth. Built automated KPI dashboards for 1,000+ accounts.
+
+Independent Research:
+1. "Does Slightly Mean Somewhat? Vague Intensity Words in LLM Numeric Actions" (ArXiv: 2605.21827, Mar-May 2026) — the paper attached to this council run.
+2. "Mining Textual Signals of AI-Assisted Writing Under Varying Scrutiny" (ArXiv: 2604.23471, Jan-Apr 2026) — Designed a two-phase controlled experiment (21 writers, 251 judges, ~2,000 paired evaluations) studying whether AI detection warnings change writing behavior; found judges identify warned writers as "human" at a statistically significant rate (p=0.000243) that four classifiers trained on 10 NLP features could not replicate.
+
+Education:
+- Georgia Tech — M.S., Computational Data Science (Expected Dec 2026)
+- Baruch College, CUNY — B.B.A., Computer Information Systems – Data Analytics

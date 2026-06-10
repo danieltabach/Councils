@@ -1,41 +1,71 @@
 # Devil's Advocate — stage2
 
-### Agreements
-
-**Advisor F, "Single Biggest Weakness":** Fully agree, and I want to sharpen why. Advisor F frames the human baseline gap as "you don't know what you're measuring." That's correct but understates the structural problem. Without the human baseline, the entire "passive failure" framing is unfalsifiable as stated. The paper cannot distinguish between three interpretations: (1) the model is failing relative to human intent, (2) the model is accurately reflecting genuine linguistic ambiguity, or (3) the model is doing something idiosyncratic that neither confirms nor disconfirms human intent. All three are consistent with the current data. The framing presupposes interpretation (1) while the evidence is silent on it. This isn't a gap to fill — it's a load-bearing assumption that the entire research program rests on.
-
-**Advisor F, "Narrative Inflation Check" equivalent (the "inoculation" observation):** Advisor F makes the sharpest point in the entire council when they note that self-awareness of a failure mode can function as pre-emptive inoculation rather than behavioral constraint. I flagged the inflation in my original review, but I didn't identify the mechanism. Advisor F did. The author named the trap, which makes it harder for advisors to spring it — and may not actually prevent the author from falling into it. This is the most psychologically precise observation in any review.
-
-**Advisor E, "What You Cannot Do Alone" — IRB timing:** Advisor E correctly identifies the IRB window as the most time-sensitive dependency and the one most likely to be treated as a future work item rather than an immediate constraint. I mentioned the human baseline as critical but didn't flag the institutional clock. If the author is finishing their master's, the window for conducting IRB-approved human subjects research under Georgia Tech's umbrella is closing. This is a hard deadline masquerading as a soft one.
-
-**Advisor B, "The Unclaimed Coordinate":** Advisor B's field cartography is the most rigorous treatment of the novelty question in the council. Their specific identification of what is and isn't occupied — particularly the distinction between the *consistency* question (do identical inputs produce identical outputs?) and the *semantic fidelity* question (do semantically graduated inputs produce ordinally graduated outputs?) — is the clearest articulation of where the genuine gap lies. I agree that this specific coordinate is not occupied, and I should have been more precise about this in my original review rather than gesturing at "adjacent literature."
+# Advisor B — Post-Council Response
 
 ---
 
-### Disagreements
+## Agreements
 
-**Advisor A, "Cross-model belongs in Bucket B, not Bucket A":** Advisor A argues that cross-model comparison is a field-defining move rather than a credibility move, and should therefore come after the human baseline. I disagree with the sequencing logic, though not the underlying point. The argument is: without a human anchor, cross-model comparison is just "Model A vs. Model B," which is weaker than "Model A vs. Model B vs. Human Baseline." This is true. But it proves too much. By this logic, nothing should happen before the human baseline, because everything is stronger with it. The practical question is: what can be executed in parallel with the IRB process, which takes 4-8 weeks? Cross-model comparison can be collected during that window at minimal additional cost. The human baseline doesn't need to be published first — it needs to be collected first. Running cross-model data collection while IRB is pending is not sequencing error; it's efficient use of a bottleneck period. Advisor A's bucket logic is sound; the execution timeline implication is wrong.
+**Advisor E (Skeptical PI) — "You're underselling one thing and overselling another."**
+This is the most precise diagnosis in the entire council. E correctly identifies that the boundary abstention finding is the genuine contribution and the compression finding is the expected one. I made this point but less sharply. E's framing — "the compression stuff is context; the boundary behavior is the finding" — is the clearest single sentence in all six reviews and Daniel should tattoo it somewhere visible.
 
-**Advisor D, "Target the NLP/deployment-safety audience first. Do not lead with alignment":** Advisor D recommends leading with NLP safety venues (EMNLP, ACL) and treating alignment as a second audience. I partially disagree. The recommendation is strategically sound for publication, but it may be wrong for fellowship positioning. The author is an Algoverse AI Safety Research Fellow. Their credibility infrastructure is in the alignment community, not the NLP community. Submitting to EMNLP as a first move optimizes for one audience while potentially signaling to the fellowship community that the work isn't really safety research. The author needs to decide which community they're building toward, because the optimal first venue differs depending on the answer. Advisor D treats this as a pure publication strategy question; it's also a community identity question.
+**Advisor C (Research Sequencing) — Three-paper arc structure.**
+The sequencing logic is sound. Paper 2 = cross-model replication, Paper 3 = domain/stakes sensitivity. I agree with this ordering and the reasoning behind it. Don't build the stakes study before you've established the phenomenon generalizes. C is right.
 
-**Advisor B, "The Steelman Alternative" — framing as "behavioral characterization of vague language in constrained action contexts":** Advisor B's steelman is accurate but undersells the boundary abstention finding. They write that the right framing is "behavioral characterization" and that the research program "does not require a new field." I agree it doesn't require a new field. But "behavioral characterization" is too flat a frame for the abstention finding specifically. The drastically/dramatically flip — where swapping one near-synonym causes categorical behavioral switching in the same state — is not adequately captured by "behavioral characterization." It's a discontinuity finding with direct safety implications: a user cannot predict, from the surface language alone, whether their instruction will produce action or abstention. That's a reliability claim, not just a characterization claim. The steelman should preserve this.
+**Advisor F (Field Cartographer) — "The action/estimation distinction is the moat."**
+F correctly identifies that the critical differentiator from the verbal probability literature (Zhang 2024, Mosteller 1990) is that Daniel is measuring *action execution* not *probability estimation*. This is the claim that needs to be defended aggressively and explicitly in every submission. I mentioned it but F articulates it more precisely.
 
-**Advisor E, "Do not try to connect with MIRI or ARC at this stage":** Agree with the conclusion but the reasoning is wrong. Advisor E says MIRI and ARC are focused on theoretical alignment and formal verification, which is true. But the actual reason to avoid them is simpler: they are not hiring or fellowshipping empirical deployment researchers right now, and cold outreach to them has near-zero expected value regardless of the work's quality. The framing matters because it implies the work is misaligned with their research programs, when the real issue is just that the author has no warm path in and the expected return on the time investment is negative.
+**Advisors A, C, D, E (unanimous) — Cross-model comparison is the highest-priority next step.**
+The council is unanimous here. I agree. This is not a controversial call.
 
----
-
-### Revisions to My Review
-
-**What I missed: The IRB clock.** My original review identified the human baseline as the most important next step but treated it as a research priority rather than an institutional timing constraint. Advisor E's point about the master's completion timeline and the IRB window is correct and I should have flagged it. The human baseline isn't just the most important study — it's the study with the hardest external deadline. I revise my priority ordering: the IRB application is not "first step in the research program," it's "the thing that must happen before the master's ends, full stop."
-
-**What I understated: The boundary abstention finding is doing more work than I gave it credit for.** My original review treated the three findings (compression, state dominance, boundary behavior) as roughly equal in novelty. Reviewing the other advisors' treatments, I think I was wrong. The compression finding is the least novel — it's consistent with what the vague quantifier literature would predict. The state dominance finding is interesting but arguably expected. The boundary abstention finding — specifically the drastically/dramatically categorical flip — is the finding that has no clean prior art and the most direct safety implication. I should have led with it as the paper's sharpest contribution rather than treating it as one of three parallel findings.
-
-**What I should strengthen: The "inoculation" mechanism.** I identified narrative inflation in the brief but didn't explain the mechanism by which self-awareness fails to prevent it. Advisor F's framing is better than mine. I would now add to my Narrative Inflation Check: the author's self-awareness is real but may be functioning as a permission structure rather than a constraint. Naming the failure mode in the brief signals sophistication to advisors and may reduce the pressure they apply — which is exactly the wrong outcome if the goal is genuine stress-testing.
-
-**What I stand by: The "passive failure" framing is doing more work than the evidence supports.** No other advisor challenged this as directly as I did, and the council's overall response suggests some softening of the adversarial position. I maintain it. The framing names a verdict (failure, passivity, interface as locus) that requires the human baseline to be defensible. Until that data exists, "passive failure" is a hypothesis dressed as a finding. The author should use it as a research program label, not as a description of what the current paper demonstrates.
+**Advisor D — Prolific cost estimate (~$133 for 100 participants).**
+D did the actual math on Prolific costs. I said "cheap" without quantifying it. D's specific numbers ($1/participant + 33% fee = ~$1.33, 100 participants = ~$133) are useful and within Daniel's stated budget. This is a concrete correction to my vague treatment of the IRB cost question.
 
 ---
 
-### Blind Spots
+## Disagreements
 
-**The model deprecation problem, and what it means for the research program's durability.** Advisor F mentions it briefly, but no advisor develops it. Claude Haiku (`claude-haiku-4-5-20251001`) is a specific model version. Anthropic releases new versions regularly. The behavioral fingerprint documented in this paper — the specific compression pattern, the 0.50 hedge, the drastically/dramatically flip — may not replicate on the next Haiku release. This is not a minor limitation. It means the paper's empirical foundation is time-stamped in a way that most empirical research is not. A physics experiment from 2024 still holds in 2026. A behavioral experiment on a commercial model version may not. The research program needs a strategy for this: either (a) establish the phenomenon on open-
+**Advisor A — "Your most realistic targets for August 2025 submission."**
+A's timeline is confused. The paper is dated May 2026. The author is targeting NeurIPS 2026 workshops, not 2025. A's entire venue section references 2025 deadlines that have already passed. This is a significant error in a strategic review. D correctly identifies NeurIPS 2026 with an August 29, 2026 suggested deadline. Daniel should use D's timeline, not A's.
+
+**Advisor C — "Do NOT target NeurIPS main track yet. Workshop is the right bar for this stage."**
+I agree with the conclusion but C states this without acknowledging that NeurIPS workshops have also become substantially more competitive in 2024-2026. Several NeurIPS workshops now have acceptance rates in the 25-35% range with hundreds of submissions. "Workshop" is not a soft landing. Daniel needs to know this going in, not discover it at rejection.
+
+**Advisor D — OpenAI Safety Fellowship framing.**
+D references an OpenAI Safety Fellowship running "September 14, 2026 through February 5, 2027." I cannot verify this program exists as described, and D's citation pattern in this section is suspiciously specific in ways that suggest hallucination risk. Daniel should independently verify any fellowship program before investing application time. Do not take D's fellowship list at face value without checking primary sources.
+
+**Advisors A and C — Recommending GPT-4o-mini and Gemini Flash as "cheap frontier models."**
+Both advisors recommend these for cross-model comparison. I'd push back harder: GPT-4o-mini and Gemini Flash are not the same class of model as Claude Haiku. Comparing a small Anthropic model to a small OpenAI model and a small Google model gives you cross-vendor comparison, but it confounds model size, training data, RLHF procedure, and architecture simultaneously. You can't isolate what's driving differences. The cleaner scientific move is to compare within a model family (Haiku vs. Sonnet vs. Opus, or Llama 8B vs. 70B) to isolate scale effects, AND across families (Llama vs. Mistral vs. Haiku) to test generalization. The council is treating "cross-model" as monolithic when it's actually two different experiments with different inferential value.
+
+**Advisor E — "Do NOT pursue the valence/stakes manipulation, the stakeholder persona manipulation, or the mechanistic interpretability route right now."**
+E is right about mech interp. E is wrong about the valence study. The stakes/domain manipulation is not just "a different paper" — it's the paper that makes this work safety-relevant rather than just behaviorally interesting. If Daniel's goal is to reach frontier AI labs, a paper that shows "the model's action policy changes when the stakes framing invokes human welfare" is directly relevant to Anthropic's safety team in a way that "here's the cross-model replication" is not. E's conservatism here is appropriate for academic sequencing but suboptimal for career positioning.
+
+---
+
+## Revisions to My Review
+
+**What I missed: The ε² ratio is partially a design artifact, and I didn't push hard enough on this.**
+
+I said the state-dominance finding (ε²_baseline = 0.782 vs. ε²_word = 0.079) is "a consequence of your experimental design, not a discovery about language models" because including an 89% ceiling condition mechanically forces convergence. I stand by this challenge, but I understated the correct response to it.
+
+The correct response is not to remove the 89% condition — it's to report the split-range analysis (which Daniel already has in the paper: word dominates at low baselines 5:1, context dominates at high baselines 14:1) as the *primary* result, and the aggregate 10:1 ratio as a summary statistic. The split-range inversion is the more interesting and defensible finding. The aggregate ratio is the one that's vulnerable to the design-artifact critique. I should have been clearer about which number to lead with.
+
+**What I missed: The no-word control is more important than I indicated.**
+
+I mentioned it briefly. Advisor E correctly elevates it. Without a no-word control ("increase innovation" with no intensity modifier), you cannot distinguish "the model hedges at 0.50 because weak words mean 0.50" from "the model defaults to 0.50 for any increase instruction." This is not a minor gap — it's a threat to the central interpretive claim about what the 0.50 hedge means. This is a $2-3 API cost fix that closes a major hole. I should have led with it.
+
+**What I missed: The drastically/dramatically divergence is your single most citable finding.**
+
+I identified the three-mode behavior as the strongest finding. But I didn't sharpen it to its most pointed form: *drastically* and *dramatically* are near-synonyms by any standard linguistic analysis, yet they produce categorically different behavior (7% abstention vs. 97% abstention) at identical system states. This is not a compression finding — it's an anti-compression finding. The model is making a categorical distinction that humans would not reliably make. That's a more surprising and publishable result than anything else in the paper. Every submission should lead with this specific contrast, not the general three-mode framework.
+
+**What I would change in my original framing of IRB:**
+
+I was too aggressive in pushing Path 3 (reframe to avoid human comparison entirely) and not concrete enough about the Prolific cost. D's specific numbers ($133 for 100 participants) and the exempt determination pathway are more actionable than my general "reframe it." I'd now recommend: do Path 3 for the NeurIPS workshop submission, simultaneously submit an exempt determination request to GT IRB (20-minute task), and if exempt status comes through before submission, add a small Prolific study as a supplementary result. Don't wait for IRB to submit; use it to strengthen the follow-up version.
+
+---
+
+## Blind Spots
+
+**All advisors missed: The replication crisis problem specific to this paper.**
+
+Daniel's paper runs 30 trials per cell at T=0.0 and T=0.7. The paper itself acknowledges that p-values "overstate significance" because runs within the same word are not independent. No advisor pushed hard enough on what this means for the cross-model comparison paper. When you run the same 30-trial protocol on Llama 3.1 8B and find "similar compression patterns," how do you know the similarity is real and not an artifact of the discrete output space both models share? If both models are constrained to output values like 0.50, 0.60, 0.65, 0.70 because those are the natural round-number anchors in the training data, you'll see "similar compression" regardless of whether the underlying mechanism is the same. The cross-

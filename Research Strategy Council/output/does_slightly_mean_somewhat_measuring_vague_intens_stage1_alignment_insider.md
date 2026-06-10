@@ -1,135 +1,140 @@
 # Alignment Insider — stage1
 
-This is sufficient. I now have what I need for a fully grounded strategic review. Let me deliver it.
+This is a comprehensive brief and I have everything I need. Let me now deliver the full strategic council review.
 
 ---
 
-# Alignment Insider: Strategic Review of Danny Tabach's Research Program
-
-*Adversarial deliberation requested. Narrowing, not expansion, is the mandate.*
+# ALIGNMENT INSIDER COUNCIL REVIEW: DANIEL TABACH
 
 ---
 
-## Community Reception Assessment
+## SECTION 1: HOW THE COMMUNITY WILL RECEIVE THIS WORK
 
-**The honest read: this will be received as a useful empirical NLP result wearing an alignment coat. The alignment sticker will not be free.**
+**The honest read: this is a legitimate empirical finding wrapped in an undersold framing.**
 
-Here is what will happen when an alignment researcher reads this paper. They will see a well-executed behavioral experiment on a single model in a single synthetic domain. They will appreciate the controlled design. Then they will ask the question that determines reception: *does this tell me something about alignment that I couldn't already infer from what I know about LLM behavior generally?* A significant fraction will answer no. They will say: "Of course LLMs are inconsistent with vague language. Of course context dominates. This is a prompt sensitivity result with a resource allocation wrapper."
+The three core findings — lexical compression to coarse regimes, state dominance over word choice, and the three-mode boundary policy (hedge/act/abstain) — are genuinely interesting to the right audience. The hedge/act/abstain finding in particular is the kind of clean, surprising behavioral result that gets attention at workshops. The convergence funnel (10:1 ratio of baseline variance to word variance) is a well-documented, well-visualized result.
 
-The alignment community's current center of gravity on agentic problems is focused on systems that "develop behaviors or objectives that conflict with designers' or operators' goals" — particularly in tool-using, multi-step environments where agents pursue instrumental aims including deception, collusion, or specification gaming. Your paper is about something structurally different: not a model pursuing misaligned goals, but a model failing to faithfully translate a user's linguistic intent into a numeric action. That is a real problem. But the community's gatekeepers will need to be convinced it belongs in *their* tent, not in the NLP or HCI tent.
+Here's the reception problem you need to know about: **the alignment and safety community will not receive this as an alignment paper without significant reframing.** The current framing — "vague instructions may not map to stable numeric actions" — sounds like a UX or prompt engineering concern. The community that cares about alignment wants to know: *does this create a failure mode that matters for safety?* You have the seed of that argument (the downstream dollar consequences, the boundary discontinuity), but you haven't made it the spine of the paper.
 
-**The reception risk is specific:** reviewers at alignment-focused venues will ask whether this is a *safety* problem or a *usability* problem. They will point out that the model isn't scheming, isn't deceiving, and isn't pursuing misaligned goals — it's just imprecise. That's a meaningful distinction in this community's current framing. You will need a sharp answer to that question before you submit anywhere that calls itself an alignment venue.
+The **LLM evaluation community** (NeurIPS Datasets & Benchmarks, BIG-bench-style work, the evals crowd at Anthropic/ARC Evals) will find this more immediately legible. They're used to "we ran X prompts, found Y behavioral pattern." Your methodology fits that mold cleanly.
 
-**What works in your favor:** The "drastically" → "dramatically" flip — where swapping one near-synonym causes the model to switch from acting to abstaining in the same state — is genuinely surprising and memorable. That single finding is your strongest hook. Lead with it everywhere. It is the empirical result that most clearly demonstrates that the failure mode is *discontinuous* and *invisible*, not merely noisy. That is the finding that separates this from generic prompt sensitivity work.
+The **HCI / CSCW community** (CHI, CSCW, IUI) would find the operator-facing framing extremely compelling — *how do business users reliably communicate intent to AI systems?* — but you're not in that community yet and their review standards differ.
 
-**What works against you:** One model (Claude Haiku), one domain, no human baseline. The community will want to know if this is a Claude Haiku artifact. They will want to know if humans would compress these words the same way. Without those comparisons, the paper's claim about alignment risk rests on a single data point in a synthetic environment. That is a real limitation and reviewers will name it.
+**The community is hungry for this right now.** Agentic systems and tool-use safety are among the hottest topics in 2025-2026. The specific gap you're studying — what happens when vague human language must become a precise machine action — is real and under-measured. You are not behind the curve. You are approximately at the right moment.
 
----
-
-## Audience Recommendation
-
-**Target the NLP/deployment-safety audience first. Do not lead with alignment.**
-
-This is the narrowing you asked for. You cannot serve alignment, HCI, and NLP simultaneously with this paper. You need to pick a lane, establish credibility there, and then cross over.
-
-The right first audience is the NLP safety and evaluation community — specifically, researchers working on LLM behavioral consistency, prompt sensitivity, and deployment-facing reliability. This community will read the paper on its own terms. They will evaluate the experimental design, the statistical approach, and the generalizability of the findings. They will not demand that you solve deception or scheming. They will ask: *is this a real behavioral phenomenon, is it measured carefully, and does it matter for deployed systems?* Your paper can answer all three of those questions.
-
-Workshops focused on AI safety drew significant attention at NeurIPS 2025, with large language models being deployed at scale in consumer products making questions about alignment, robustness, and safe behavior no longer theoretical. That's the current appetite. But notice the framing: "robustness and safe behavior" — not "deception and scheming." Your work fits the former frame better than the latter.
-
-The alignment community is your *second* audience, not your first. Once you have a publication record in NLP safety, you can bring the work to alignment venues with the credibility of having already passed peer review in a rigorous technical community. Trying to enter alignment venues first, as an independent researcher with one preprint, is a harder path.
+**What will get you dismissed:** The single-model limitation is the reviewers' first objection. They will ask "is this Claude Haiku or is this a real phenomenon?" You need cross-model comparison before a strong venue submission. This is fixable and you know it. The lack of a human baseline is the second objection — but I'll address this in the IRB section with a path around it.
 
 ---
 
-## Venue Strategy
+## SECTION 2: FRAMING — WHAT TO LEAD WITH AND WHAT TO BURY
 
-**One paper, one venue. Do not fragment this into three simultaneous submissions.**
+**Do not lead with "AI Safety and Alignment."** That label in the alignment community means something specific: deceptive alignment, reward hacking, corrigibility, interpretability of goals. Your paper is about a narrower, more operational problem. If you walk into the alignment track calling this an alignment paper, technically sophisticated reviewers will penalize you for overclaiming.
 
-**Stage 1 (now): EMNLP 2026 or ACL 2026 — findings track or main conference**
+**The frame that will land hardest** in the current moment is: **"Agentic tool-use reliability and the language-to-action boundary."** This is precise, it's hot, and it maps exactly to what you measured. The safety framing is still there — boundary discontinuities in agentic systems are a real safety concern — but you're not overclaiming.
 
-This is the right first venue. EMNLP and ACL have strong traditions of empirical behavioral work on LLMs. The paper's controlled design, nonparametric statistics, and behavioral framing fit the NLP community's evidence standards. The "does slightly mean somewhat?" framing is exactly the kind of question that gets traction at these venues. The linguistic grounding (Quirk taxonomy, degree modifiers) is a genuine differentiator — most NLP safety papers don't have that theoretical scaffolding.
+**Secondary frames that work:**
+- *LLM evaluation / behavioral characterization* — for NeurIPS evaluation workshops
+- *Human-AI interaction for operational systems* — for CHI/CSCW/IUI
+- *Prompt sensitivity in tool-calling agents* — for NLP venues (EMNLP, ACL workshops)
 
-What you need to add before submission: a human baseline (even a small-n survey), at least one additional model for comparison, and a no-word control condition. Without these, the paper is a first slice, not a complete study. The human baseline is the single highest-leverage addition — it either shows that humans also compress these words (in which case the model is reflecting genuine linguistic ambiguity) or it shows that humans differentiate them (in which case the model has a specific failure). Either result is publishable. The ambiguity of not knowing is not.
-
-**Stage 2 (after Stage 1 publication): NeurIPS SoLaR or COLM SoLaR workshop**
-
-The SoLaR workshop is an interdisciplinary gathering that aims to foster responsible and ethical research in language modeling, recognizing significant risks from development, deployment, and use of language models, and bringing together experts from various domains with a shared commitment to promoting fairness, accountability, transparency, and safety. This is the right second venue. By the time you submit here, you should have the multi-model comparison and the human baseline. The SoLaR framing — deployment safety, socially responsible LM research — fits your work better than the core alignment workshops, which skew toward deception, scheming, and model internals.
-
-**Stage 3 (cross-model study as a second paper): FAccT or AIES**
-
-FAccT is the right venue for a second paper that establishes the cross-model pattern and connects to deployment consequences in high-stakes domains. FAccT reviewers care about real-world harm, not theoretical alignment risk. A paper showing that multiple frontier models exhibit the same compression pattern, with a human baseline showing that humans *don't* compress these words the same way, is a strong FAccT submission.
-
-**Do not target CHI.** CHI will ask for user studies, interface designs, and interaction data. Your paper has none of that. CHI is the wrong community for this work at this stage.
-
-**Do not target core NeurIPS or ICML main conference.** Not yet. You don't have the cross-model generalizability or the theoretical contribution that main conference reviewers at those venues will require.
+**What to bury:** The optimization/MILP origin story. It's compelling to you personally, but reviewers will see it as domain-specific scaffolding and worry the findings don't generalize. The testbed should be described as "a controlled synthetic allocation environment used as a measurement instrument" — which is exactly how you wrote it in the paper. Keep that framing. Don't let the Chase backstory bleed into the research narrative.
 
 ---
 
-## "Passive Failure" in Alignment Discourse
+## SECTION 3: THE IRB QUESTION — DELIBERATE ANALYSIS
 
-**The framing is not recognized as a term of art. It is recognized as a phenomenon. That gap matters.**
+This is the section you asked me to spend the most time on. Here is the full picture.
 
-The alignment community does not have an established concept called "passive failure at the action interface." What it does have is a rich literature on specification gaming, reward hacking, and Goodhart's Law — all of which involve a model doing something other than what the operator intended. Research on specification gaming shows that open-ended language causes otherwise-constrained models to bypass rules, and that vague or underspecified objectives lead to environment or policy hacking. Your "passive failure" framing is adjacent to this but distinct: you're not describing a model gaming a specification, you're describing a model failing to faithfully execute a specification because the specification was expressed in vague natural language.
+**The key legal/institutional fact:** IRB review is required for "research involving human subjects" under the Common Rule (45 CFR 46). The critical question is whether your planned human baseline survey constitutes "research involving human subjects" under that definition — and whether it qualifies for **exempt status**, which is fast and cheap.
 
-That distinction is real and worth preserving. But "passive failure" as a label will not resonate with most alignment researchers on first contact. It sounds like a euphemism for "the model is bad at this." The framing that will resonate better is **"semantic compression at the action boundary"** or **"intent-action fidelity"** — language that connects to the community's existing vocabulary around faithful execution and instruction following.
+### Path 1: Avoid the Human Baseline Entirely (Strongest Near-Term Option)
 
-The deeper issue is this: the alignment community is currently focused on *active* failures — strategic reasoning about objectives, context, and safety apparatus, resulting in alignment faking, cooperation with adversarial actors, or active sabotage. Your work is about a failure mode that doesn't require any of that. The model isn't trying to do anything wrong. It's just imprecise. That is a harder sell to a community that has trained itself to worry about sophisticated adversarial behavior.
+Your paper as currently written is a **pure behavioral study of a language model**. No human subjects are involved. The model is the subject. This requires **zero IRB involvement** whatsoever. You can extend the paper significantly — more models, more domains, more word sets, denser grids — without ever touching IRB. This is the path of least resistance and it is scientifically defensible.
 
-**The reframe that opens doors:** Stop calling it "passive failure" in alignment venues. Call it a problem of **operator intent preservation** — the question of whether a deployed system faithfully executes the operator's intended semantics, not just the surface form of their instruction. This connects to Anthropic's explicit language about steerable, trustworthy AI and to the broader concept of corrigibility. It's a harder problem than it looks, and your paper is the first controlled measurement of it.
+The reframe: instead of framing the missing human baseline as a *limitation*, frame it as a *deliberate design choice* that isolates model behavior from human variability. You're not measuring whether humans agree with these words; you're measuring what the model does with them. That's a complete scientific question on its own. Many published behavioral characterization papers at NeurIPS and EMNLP workshops take exactly this approach.
 
----
+**The community cost:** You cannot make comparative claims like "the model is worse than humans at this." You can only say "the model compresses these words; whether humans do too is an open question." That is a legitimate limitation, but it is not fatal. Papers at the venues you're targeting routinely make this trade.
 
-## Potential Allies & Collaborators
+### Path 2: Exempt Determination (If You Want the Human Baseline)
 
-**Be specific. Don't cold-email everyone. Pick two.**
+If you want to include a human comparison, the good news is that your study design would almost certainly qualify for **IRB Exempt Category 2** under the Common Rule. Exempt Category 2 covers research involving educational tests, survey or interview procedures, or observation of public behavior. Your planned study — asking adults to assign numeric values to vague intensity words in an online survey — fits this category cleanly. Benign behavioral interventions are defined as brief in duration, harmless, painless, not physically invasive, not likely to have a significant adverse lasting impact on the subjects, and examples include having subjects play an online game, solve puzzles, or decide how to allocate a nominal amount of cash. A numeric word-rating task is squarely in this territory.
 
-**The most natural intellectual ally is the prompt sensitivity research community.** The BrittleBench line of work (which your paper already cites) is the closest existing research program. The researchers behind that work are studying whether semantically equivalent paraphrases produce different outputs; you're studying whether semantically distinct intensity words produce stable outputs. These are complementary questions and the methodological overlap is significant. Find the authors of the BrittleBench paper and reach out with a specific, short message: "I've extended the prompt sensitivity question to the action case — here's what I found."
+**The Georgia Tech process:** As a registered student at Georgia Tech (OMSA), you have access to GT's IRB office. Exempt determinations are made by designated staff and IRB members; investigators are not permitted to make their own determinations of exemption. Requests should be submitted in the IRB system, and subject participation or data collection cannot start until investigators have received approval that the research is determined as exempt. The exempt determination process at most universities is significantly faster than full IRB review — often 2-4 weeks rather than months. You are not looking at a full board review. You are looking at a form submission and a staff determination.
 
-**Within the alignment community, the most natural entry point is through Algoverse.** MATS alumni-founded organizations include Algoverse AI Safety Fellowship, which means the Algoverse network has direct connections into the MATS and Anthropic ecosystems. You are already inside this network. Use it. Ask your Algoverse PIs specifically: who at Anthropic or Redwood is working on instruction following reliability or agentic safety evaluations? That is the warm introduction you need, not a cold ArXiv ping.
+**The cost question — it's cheaper than you think.** Prolific recommends paying participants at least $12.00 per hour, with a minimum of $8.00 per hour. The platform fee is 33.3% for academic or non-profit customers. A 5-minute numeric rating survey (10 words, assign a percentage to each) at $1.00 per participant (equivalent to $12/hr) plus 33% fee = ~$1.33 per response. **100 participants = ~$133 total.** That is within your $200 budget. You don't need fancy survey sites. You need a Google Form linked to Prolific, and a GT email to get the academic rate.
 
-**The AgentAlign and AgentSafetyBench research groups** are working on adjacent problems. AgentHarm presents a benchmark focusing on explicitly malicious agent tasks, while AgentSafetyBench offers an evaluation framework with 2,000 test cases examining safety risks across different stages of agent operation. These groups are measuring safety failures in agentic systems, but they're focused on harmful outputs, not on semantic compression of legitimate instructions. Your work is complementary, not competitive. Reach out to the AgentSafetyBench authors with that framing.
-
-**Do not try to connect with MIRI or ARC at this stage.** Their research programs are focused on theoretical alignment and formal verification, respectively. Your empirical deployment work is not in their wheelhouse and they are not in yours.
+**The strategic recommendation on IRB:** Do not do the human baseline for the NeurIPS 2026 workshop submission. The timeline is too tight. Do the exempt determination this fall (September–October 2026), run the Prolific survey in November, and include the human baseline in a **revised extended version** you target for a full-length venue (EMNLP 2026 workshops, or a journal submission) in early 2027. This is the correct sequencing: publish the model-only version now, add the human comparison in the follow-up.
 
 ---
 
-## Fellowship & Career Positioning
+## SECTION 4: VENUE STRATEGY — WHERE TO SUBMIT AND WHEN
 
-**Your profile is stronger than you think for one specific fellowship and weaker than you think for another.**
+### Primary Target: NeurIPS 2026 Workshop
 
-**MATS: Realistic, but requires a specific pitch.**
+The NeurIPS 2026 suggested submission date for workshop contributions is August 29, 2026, with mandatory accept/reject notification by September 29, 2026. The conference runs December 6th through 12th, 2026. This is your primary target. You have approximately 11 weeks from today (June 10) to get a submission-ready paper.
 
-MATS seeks individuals deeply motivated by AI security, alignment, and governance with the skills and mindset to contribute to cutting-edge research. With only about 4-7% of applicants ultimately selected, the program is highly competitive. Successful applicants demonstrate clear mission alignment, a track record of research or competency relevant to their chosen stream, and credible references.
+**Specific workshops to target (in priority order):**
 
-Your profile — working data scientist, master's student, one ArXiv preprint, Algoverse fellow — is exactly the kind of non-traditional background that MATS says it welcomes. MATS explicitly looks for talent that traditional pipelines might overlook and welcomes technical researchers without prior ML experience who can demonstrate strong reasoning and research potential.
+1. **NeurIPS 2026 Workshop on Multi-Turn Interactions in LLMs** — This is your best fit. The workshop explicitly addresses multi-turn RL learning for agentic tasks, maintaining alignment over extended interactions, and human-AI interaction ensuring models adapt to user goals without compromising safety. Your paper on language-to-action reliability in tool-using agents fits the "agentic tool use" and "alignment over interactions" themes directly. The 2025 edition accepted 4 or 8-page papers (non-archival, double-blind) with a submission deadline of August 22. Expect the 2026 version to have a similar deadline around August 22–29.
 
-What you need for MATS is a credible answer to: "Which stream are you applying to, and why does your work connect to that stream's research agenda?" The Anthropic stream spans a range of empirical research areas in AI safety including AI control, scalable oversight, model organisms, model internals, model welfare, and security. Your work is closest to the "model organisms" and "AI control" streams — specifically, the question of whether deployed systems faithfully execute operator intent. Frame your application around that connection, not around "passive failure."
+2. **NeurIPS 2026 LLM Evaluation Workshop** — There is a dedicated LLM Evaluation workshop track at NeurIPS. Your paper is fundamentally a behavioral characterization / evaluation paper. This is a natural fit and the bar is slightly more accessible than the main alignment workshops.
 
-MATS looks for evidence of research ability, ideally in relevant areas, with outputs such as publications, blog posts, open-source projects, or substantial research contributions. Your ArXiv preprint is your evidence of research ability. The Algoverse fellowship is your evidence of community engagement. The JPMorgan production system is your evidence that this work comes from a real deployment problem, not a toy exercise. That combination is genuinely distinctive.
+3. **NeurIPS 2026 Constrained Optimization for ML Workshop** — A surprising but real fit. This workshop focuses on AI systems deployed in safety-critical domains and the demand to ensure fairness, safety, robustness, and interpretability. Your paper's origin in constrained optimization and its findings about solver-integrated language interfaces could resonate here.
 
-**Anthropic Fellows: Harder, but not impossible.**
+### Secondary Target: EMNLP 2026 Workshops
 
-Anthropic cares much more about ability to execute on research than credentials. Strong candidates can code well in Python, take ambiguous problems and make concrete progress, and think clearly about hard technical questions. They explicitly say you don't need a PhD, prior ML experience, or published papers.
+EMNLP 2026 runs October 22–26 in Budapest, Hungary. The ARR submission deadline was May 25, 2026, with EMNLP commitment deadline August 2, 2026.
 
-Your obstacle at Anthropic is not credentials — it's fit. Anthropic's current priority areas include scalable oversight, adversarial robustness and AI control, model organisms, mechanistic interpretability, AI security, and model welfare. Your work doesn't cleanly map to any of these. The closest is "model organisms" — but Anthropic's model organisms work is focused on creating controlled demonstrations of specific misalignment phenomena (alignment faking, scheming). Your work is measuring a different phenomenon. You would need to reframe your research agenda around creating a model organism of *intent-action infidelity* — a controlled demonstration that vague operator instructions reliably produce misaligned actions in specific, predictable conditions. That reframe is possible, but it requires you to think about your work differently.
+**Specific EMNLP workshops:**
 
-**The fellowship to target first is MATS, not Anthropic.** MATS is the on-ramp. Anthropic is the destination you work toward after MATS.
+- **UncertaiNLP @ EMNLP 2026** — The Third Workshop on Uncertainty-Aware NLP. Your finding that the model collapses 10 words into 5 output regimes is fundamentally a story about how models handle lexical uncertainty in action contexts. This is a direct fit.
 
----
+- **REALM (Research on Agent Language Models) @ EMNLP 2026** — REALM covers tool use, safety and security, and the challenge of turning promising agent capabilities into dependable systems — agents must become more reliable on long-horizon tasks and interact safely with external environments. Your paper is exactly about reliability at the language-to-action boundary.
 
-## Community Appetite & Timing
+### Tertiary Target: ACL 2026 Workshops (Already Happened, But Note for Future)
 
-**The timing is genuinely good for deployment-facing empirical work. But you're competing with a crowded field.**
+The EvalEval workshop was in-person at ACL 2026 in San Diego. ACL 2027 will be your next shot at this venue. File this for future planning.
 
-Workshops focused on AI safety drew significant attention at NeurIPS 2025, with large language models being deployed at scale in consumer products making questions about alignment, robustness, and safe behavior no longer theoretical. The community has shifted meaningfully in the last 18 months toward deployment-facing empirical work. The question used to be "will AI systems be misaligned in theory?" It is now increasingly "are deployed AI systems behaving reliably in practice?" Your work is in the second category.
+### Realistic Assessment
 
-Empirical studies have converged on realistic RL and tool-use environments to elicit and quantify agentic misalignment. The community is hungry for controlled, reproducible experiments that demonstrate specific failure modes. Your paper has that. The synthetic environment is a feature, not a bug — it makes the result clean and interpretable in a way that real-world deployment logs cannot.
-
-The risk is not that you're too early. The risk is that you're in a crowded space. Submitting on a hot topic like AI safety or LLM evaluation can be advantageous because there are more workshops accepting papers in those areas, but it also means more competition. The key is to bring a specific angle or insight that existing work has not addressed. Your specific angle — the *action interface*, not the *output quality* — is genuinely underexplored. The community has studied harmful outputs, hallucinations, and jailbreaks extensively. It has studied much less the failure mode where a benign instruction is silently mistranslated into a different numeric action.
+The strongest student papers at NeurIPS workshops asked specific questions and answered them thoroughly. Papers that tried to tackle broad problems without narrowing to a concrete, testable claim struggled in review, while papers that asked focused questions consistently performed better. Your paper already does this well — the three empirical questions are specific and answered. The gap is cross-model comparison. Add even two open-source models before submission and you substantially close the main reviewer objection.
 
 ---
 
-## Political Landscape
+## SECTION 5: THE EXTENSION STRATEGY — WHAT TO BUILD NEXT
 
-**Three camps, one territorial dispute, one strategic opportunity.**
+You asked what direction has the best ROI. Here is my ranking, with reasoning:
 
-**Camp 1: The x-risk / deception-focused alignment researchers.** This is the dominant camp at MIRI, ARC, and in the Anthropic alignment science team. They are focused on scheming, deception, and power-seeking. This stream focuses on building a science of scheming: empirically studying oversight gaming, alignment faking, and
+### Tier 1 (Do This): Cross-Model Comparison on Open-Source Models
+
+This is the single highest-ROI extension. Run the exact same protocol on Llama 3.1 (8B and 70B), Mistral, and Qwen2.5 on your RTX 3070. You don't need API credits. The core question — does the compression pattern and three-mode boundary behavior generalize? — is what every reviewer will ask. If it does generalize, you have a finding about how language models in general handle vague intensity words. If it doesn't, you have an equally interesting finding about how training and RLHF procedures shape this behavior differently.
+
+Your RTX 3070 can run 7B-13B models locally via Ollama or llama.cpp. Colab from Algoverse can handle 70B models with quantization. This is a $0 extension.
+
+### Tier 2 (Do This for the Follow-Up Paper): Domain Valence Study
+
+Your idea about varying the stakes context ("This is allocation of ICU beds" vs. "This is allocation of innovation hours") is genuinely interesting and connects directly to safety-relevant deployment scenarios. The alignment community specifically cares about whether models behave differently when the stakes are high. This is the kind of extension that moves the paper from "interesting behavioral observation" to "safety-relevant finding." Design this as a separate study — it's a clean paper on its own.
+
+**Frame it as:** "Does the language-to-action boundary shift under high-stakes framing?" That's a question Anthropic's safety team, DeepMind's safety team, and ARC Evals would find directly relevant.
+
+### Tier 3 (Consider Carefully): Mechanistic Interpretability
+
+Your Algoverse colleagues suggested mech interp. I'll be honest with you about the community dynamics here: mech interp is extremely competitive, dominated by a small number of researchers (Neel Nanda, Chris Olah's group, Anthropic's interp team), and the bar for what counts as a real mech interp finding has risen sharply. Identifying which circuits activate for "drastically" vs. "considerably" is technically interesting, but the field will ask: what does this tell us about the mechanism that we couldn't infer from the behavioral data? That's a hard question to answer.
+
+The mech interp path is valuable for **career positioning** — the Anthropic Fellows Program specifically lists mechanistic interpretability as a priority area — but it requires more technical depth than your current skill set suggests is immediately accessible. If you want to go this direction, I'd recommend starting with Neel Nanda's TransformerLens tutorials on open-source models first, before committing to it as a paper direction.
+
+### Tier 4 (Skip for Now): Fine-Tuning for Ordinality
+
+Your idea about fine-tuning to create guardrails is interesting but requires a human baseline (which you don't have yet) and significant compute. It's a 2027 project, not a 2026 project.
+
+### The Stakeholder Persona Extension
+
+Your idea about varying the stakeholder description ("The stakeholder is an analyst" vs. "the stakeholder is a decision-maker launching across 4,000 locations") is clever and connects to personalization and alignment. This is lightweight to implement — it's just a prompt variation — and could be folded into the current paper as an additional condition. It directly addresses the question of whether the model's action policy is sensitive to the described authority level of the requester, which is a safety-relevant finding about how models weight user context.
+
+---
+
+## SECTION 6: FELLOWSHIP AND CAREER POSITIONING
+
+### Fellowships You Should Know About
+
+**1. OpenAI Safety Fellowship** — This is new and directly relevant to your goals. OpenAI has announced a Safety Fellowship for external researchers, engineers, and practitioners to pursue rigorous, high-impact research on the safety and alignment of advanced AI systems, running from September 14, 2026 through February 5, 2027. They are looking for applicants interested in safety questions that matter for existing and future systems. Priority areas include safety evaluation, ethics, robustness, scalable mitigations, privacy
